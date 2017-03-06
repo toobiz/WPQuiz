@@ -1,0 +1,330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794033E1E6DACF100FF6416 /* AppDelegate.swift */; };
+		279403411E6DACF100FF6416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403401E6DACF100FF6416 /* MainViewController.swift */; };
+		279403441E6DACF100FF6416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403421E6DACF100FF6416 /* Main.storyboard */; };
+		279403461E6DACF100FF6416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279403451E6DACF100FF6416 /* Assets.xcassets */; };
+		279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403471E6DACF100FF6416 /* LaunchScreen.storyboard */; };
+		279403531E6DB53E00FF6416 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403521E6DB53E00FF6416 /* API.swift */; };
+		279403551E6DB6FD00FF6416 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403541E6DB6FD00FF6416 /* Constants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2794033B1E6DACF100FF6416 /* WPQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2794033E1E6DACF100FF6416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		279403401E6DACF100FF6416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		279403431E6DACF100FF6416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		279403451E6DACF100FF6416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		279403481E6DACF100FF6416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2794034A1E6DACF100FF6416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		279403521E6DB53E00FF6416 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		279403541E6DB6FD00FF6416 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		279403381E6DACF100FF6416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		279403321E6DACF000FF6416 = {
+			isa = PBXGroup;
+			children = (
+				2794033D1E6DACF100FF6416 /* WPQuiz */,
+				2794033C1E6DACF100FF6416 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2794033C1E6DACF100FF6416 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2794033B1E6DACF100FF6416 /* WPQuiz.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2794033D1E6DACF100FF6416 /* WPQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				279403511E6DB4F900FF6416 /* ViewControllers */,
+				279403501E6DB4D600FF6416 /* API */,
+				2794033E1E6DACF100FF6416 /* AppDelegate.swift */,
+				279403421E6DACF100FF6416 /* Main.storyboard */,
+				279403451E6DACF100FF6416 /* Assets.xcassets */,
+				279403471E6DACF100FF6416 /* LaunchScreen.storyboard */,
+				2794034A1E6DACF100FF6416 /* Info.plist */,
+			);
+			path = WPQuiz;
+			sourceTree = "<group>";
+		};
+		279403501E6DB4D600FF6416 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				279403521E6DB53E00FF6416 /* API.swift */,
+				279403541E6DB6FD00FF6416 /* Constants.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		279403511E6DB4F900FF6416 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				279403401E6DACF100FF6416 /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2794033A1E6DACF100FF6416 /* WPQuiz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2794034D1E6DACF100FF6416 /* Build configuration list for PBXNativeTarget "WPQuiz" */;
+			buildPhases = (
+				279403371E6DACF100FF6416 /* Sources */,
+				279403381E6DACF100FF6416 /* Frameworks */,
+				279403391E6DACF100FF6416 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WPQuiz;
+			productName = WPQuiz;
+			productReference = 2794033B1E6DACF100FF6416 /* WPQuiz.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		279403331E6DACF100FF6416 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Mike Tubis";
+				TargetAttributes = {
+					2794033A1E6DACF100FF6416 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 279403361E6DACF100FF6416 /* Build configuration list for PBXProject "WPQuiz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 279403321E6DACF000FF6416;
+			productRefGroup = 2794033C1E6DACF100FF6416 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2794033A1E6DACF100FF6416 /* WPQuiz */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		279403391E6DACF100FF6416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */,
+				279403461E6DACF100FF6416 /* Assets.xcassets in Resources */,
+				279403441E6DACF100FF6416 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		279403371E6DACF100FF6416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
+				279403531E6DB53E00FF6416 /* API.swift in Sources */,
+				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
+				279403551E6DB6FD00FF6416 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		279403421E6DACF100FF6416 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279403431E6DACF100FF6416 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		279403471E6DACF100FF6416 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279403481E6DACF100FF6416 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2794034B1E6DACF100FF6416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2794034C1E6DACF100FF6416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2794034E1E6DACF100FF6416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WPQuiz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.tubis.wpquiz.WPQuiz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2794034F1E6DACF100FF6416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WPQuiz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.tubis.wpquiz.WPQuiz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		279403361E6DACF100FF6416 /* Build configuration list for PBXProject "WPQuiz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2794034B1E6DACF100FF6416 /* Debug */,
+				2794034C1E6DACF100FF6416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2794034D1E6DACF100FF6416 /* Build configuration list for PBXNativeTarget "WPQuiz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2794034E1E6DACF100FF6416 /* Debug */,
+				2794034F1E6DACF100FF6416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 279403331E6DACF100FF6416 /* Project object */;
+}
