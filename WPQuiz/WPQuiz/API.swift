@@ -19,43 +19,75 @@ class API: NSObject {
         super.init()
     }
     
-    // MARK: - All purpose task method for data
+    // MARK: - Shared Instance
     
-    func taskForResource(resource: String, parameters: [String : AnyObject], completionHandler: CompletionHander) -> URLSessionDataTask {
-        
-        var mutableParameters = parameters
-        var mutableResource = resource
-        
-        // Add in the API Key
-        mutableParameters["api_key"] = Constants.ApiKey
-        
-        // Substitute the id parameter into the resource
-        if resource.rangeOfString(":id") != nil {
-            assert(parameters[Keys.ID] != nil)
-            
-            mutableResource = mutableResource.stringByReplacingOccurrencesOfString(":id", withString: "\(parameters[Keys.ID]!)")
-            mutableParameters.removeValueForKey(Keys.ID)
+    class func sharedInstance() -> API {
+        struct Singleton {
+            static var sharedInstance = API()
         }
-        
-        let urlString = Constants.BaseUrlSSL + mutableResource + TheMovieDB.escapedParameters(mutableParameters)
-        let url = NSURL(string: urlString)!
-        let request = NSURLRequest(URL: url)
-        
-        print(url)
-        
-        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
-            
-            if let error = downloadError {
-                let newError = TheMovieDB.errorForData(data, response: response, error: error)
-                completionHandler(result: nil, error: newError)
-            } else {
-                print("Step 3 - taskForResource's completionHandler is invoked.")
-                TheMovieDB.parseJSONWithCompletionHandler(data!, completionHandler: completionHandler)
-            }
-        }
-        
-        task.resume()
-        
-        return task
+        return Singleton.sharedInstance
     }
+    
+    func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: AnyObject, _ errorString: String?) -> Void) {
+        
+        let urlString = API.Constants.BASE_URL
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            guard (error == nil) else {
+                print("Connection Error")
+                return
+            }
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            var parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
+//
+//            print(parsedResponse)
+            
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+//                let items = json["items"] as? [[String: Any]] ?? []
+//                print(items)
+//            } catch let error as NSError {
+//                print(error)
+//            }
+        
+            
+            guard let items = parsedResponse["items"] as? [[String:Any]] else {
+                print("Cannot find keys 'items' in parsedResponse")
+                return
+            }
+//
+//            print(items)
+            
+            for item in items {
+                if let title = item["title"] as? String  {
+                    print(title)
+                }
+                if let photoDict = item["mainPhoto"] as? [String:Any]  {
+//                    print(photo)
+                    for photo in photoDict {
+                        if let url = photoDict["url"] as? String  {
+                            print(url)
+                        }
+                    }
+                }
+            }
+
+//
+//            guard let buttonStart = items["buttonStart"] else {
+//                print("Cannot find keys 'buttonStart' in itemsDictionary")
+//                return
+//            }
+//
+//            print(buttonStart)
+            
+
+        }
+        task.resume()
+    }
+    
+
 }

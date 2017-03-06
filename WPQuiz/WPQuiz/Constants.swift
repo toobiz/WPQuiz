@@ -9,6 +9,6 @@
 extension API {
     
     struct Constants {
-        
+        static let BASE_URL = "http://quiz.o2.pl/api/v1/quizzes/0/100"
     }
 }
