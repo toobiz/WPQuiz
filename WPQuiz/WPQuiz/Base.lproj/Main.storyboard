@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,7 +55,53 @@
                     <view key="view" contentMode="scaleToFill" id="FQU-Pi-gF2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBl-Wd-xpG">
+                                <rect key="frame" x="16" y="201" width="343" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="eFm-Ne-Dms"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pytanie" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eh-Kk-evi">
+                                <rect key="frame" x="16" y="86" width="343" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="eMr-0f-N6g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxI-Qa-jsP">
+                                <rect key="frame" x="16" y="247" width="343" height="259"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="259" id="WnS-sa-J8Y"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEX-Da-6TP">
+                                <rect key="frame" x="133" y="610" width="108" height="37"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="EEe-Dt-4IN"/>
+                                    <constraint firstAttribute="height" constant="37" id="u6c-ur-ZLx"/>
+                                </constraints>
+                                <state key="normal" title="Dalej"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2eh-Kk-evi" firstAttribute="top" secondItem="Djc-lR-1Kq" secondAttribute="bottom" constant="22" id="8sj-IR-dha"/>
+                            <constraint firstItem="jxI-Qa-jsP" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="GVx-qh-s1t"/>
+                            <constraint firstItem="2eh-Kk-evi" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="NK6-Wm-gNo"/>
+                            <constraint firstItem="NEX-Da-6TP" firstAttribute="centerX" secondItem="FQU-Pi-gF2" secondAttribute="centerX" id="OmR-Sn-MxD"/>
+                            <constraint firstItem="zBl-Wd-xpG" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="ZYx-9d-XHw"/>
+                            <constraint firstItem="zBl-Wd-xpG" firstAttribute="top" secondItem="2eh-Kk-evi" secondAttribute="bottom" constant="46" id="dMJ-Ua-2sd"/>
+                            <constraint firstItem="jxI-Qa-jsP" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="djS-R3-1et"/>
+                            <constraint firstItem="2CN-uH-Yn6" firstAttribute="top" secondItem="NEX-Da-6TP" secondAttribute="bottom" constant="20" id="fa8-2U-XiC"/>
+                            <constraint firstItem="jxI-Qa-jsP" firstAttribute="top" secondItem="zBl-Wd-xpG" secondAttribute="bottom" constant="44" id="jsI-6N-ysX"/>
+                            <constraint firstItem="2eh-Kk-evi" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="p1W-LZ-oAa"/>
+                            <constraint firstItem="zBl-Wd-xpG" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="v2H-6x-qZ1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUm-rR-Go7">
                         <barButtonItem key="rightBarButtonItem" title="Zakończ" id="SM7-De-chb">
@@ -66,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFH-eH-6k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="785"/>
+            <point key="canvasLocation" x="1205.5999999999999" y="784.85757121439292"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u5y-zQ-sEE">
