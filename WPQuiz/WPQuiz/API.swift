@@ -13,8 +13,6 @@ class API: NSObject {
     typealias CompletionHander = (_ result: AnyObject?, _ error: NSError?) -> Void
     
     var session: URLSession
-    var quizzes = [String]()
-    var urls = [String]()
 
     override init() {
         session = URLSession.shared
@@ -32,7 +30,7 @@ class API: NSObject {
     
     func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [String], _ urls: [String], _ errorString: String?) -> Void) {
         
-        let urlString = API.Constants.BASE_URL
+        let urlString = API.Constants.LIST_URL
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
@@ -44,49 +42,69 @@ class API: NSObject {
                 print("No data was returned by the request!")
                 return
             }
-            var parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
-//
-//            print(parsedResponse)
-            
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-//                let items = json["items"] as? [[String: Any]] ?? []
-//                print(items)
-//            } catch let error as NSError {
-//                print(error)
-//            }
-        
+            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
             
             guard let items = parsedResponse["items"] as? [[String:Any]] else {
                 print("Cannot find keys 'items' in parsedResponse")
                 return
             }
-//
 //            print(items)
             
+            var quizzes = [String]()
+            var urls = [String]()
+
             for item in items {
                 if let title = item["title"] as? String  {
 //                    print(title)
-                    self.quizzes.append(title)
+                    quizzes.append(title)
                 }
                 if let photoDict = item["mainPhoto"] as? [String:Any]  {
 //                    print(photoDict["url"]!)
-                    self.urls.append(photoDict["url"] as! String)
+                    urls.append(photoDict["url"] as! String)
                 }
             }
-            completionHandler(true, self.quizzes, self.urls, nil)
-//
-//            guard let buttonStart = items["buttonStart"] else {
-//                print("Cannot find keys 'buttonStart' in itemsDictionary")
-//                return
-//            }
-//
-//            print(buttonStart)
-            
+            completionHandler(true, quizzes, urls, nil)
 
         }
         task.resume()
     }
     
-
+    func downloadQuiz(id: String, completionHandler: @escaping (_ success: Bool, _ questions: [String], _ errorString: String?) -> Void) {
+        let urlString = API.Constants.QUIZ_URL + id + "/0"
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            guard (error == nil) else {
+                print("Connection Error")
+                return
+            }
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
+            
+            guard let questionsDict = parsedResponse["questions"] as? [[String:Any]] else {
+                print("Cannot find keys 'questions' in parsedResponse")
+                return
+            }
+//            print(questionsDict)
+            var questions = [String]()
+            
+            for question in questionsDict {
+                if let text = question["text"] as? String  {
+                    //                    print(title)
+                    questions.append(text)
+                }
+//                if let photoDict = item["mainPhoto"] as? [String:Any]  {
+//                    //                    print(photoDict["url"]!)
+//                    self.urls.append(photoDict["url"] as! String)
+//                }
+            }
+            print(questions)
+            completionHandler(true, questions, nil)
+            
+        }
+        task.resume()
+    }
 }

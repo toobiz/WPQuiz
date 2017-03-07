@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, urls, error) in
-            print(quizzes)
+//            print(quizzes)
             self.quizzes = quizzes
             self.urls = urls
             DispatchQueue.main.async() {
@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
         let navController = UINavigationController(rootViewController: quizView)
-        present(navController, animated: true, completion: nil)
+        self.present(navController, animated: true, completion: nil)
     }
     
 //    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

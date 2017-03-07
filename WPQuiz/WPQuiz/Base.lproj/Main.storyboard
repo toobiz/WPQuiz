@@ -86,6 +86,9 @@
                                     <constraint firstAttribute="height" constant="37" id="u6c-ur-ZLx"/>
                                 </constraints>
                                 <state key="normal" title="Dalej"/>
+                                <connections>
+                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="79O-9j-oCW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +113,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="questionLabel" destination="2eh-Kk-evi" id="a4l-Nj-BUi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFH-eH-6k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

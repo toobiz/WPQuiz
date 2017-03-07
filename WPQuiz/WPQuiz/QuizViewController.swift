@@ -9,7 +9,12 @@
 import UIKit
 
 class QuizViewController: UIViewController {
-
+    
+    var currentPage = Int()
+    var questions = [String]()
+    
+    @IBOutlet var questionLabel: UILabel!
+    
     @IBAction func endButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -17,8 +22,16 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        API.sharedInstance().downloadQuiz(id: "6087919785886849") { (success, questions, error) in
+            if success == true {
+                print(questions)
+                self.questions = questions
+                DispatchQueue.main.async(execute: {
+                    self.questionLabel.text = questions[0]
+                    self.currentPage = 0
+                });
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,15 +39,14 @@ class QuizViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func showNextQuestion(_ sender: Any) {
+        if questions.count > currentPage + 1{
+            questionLabel.text = questions[currentPage + 1]
+            currentPage = currentPage + 1
+        } else {
+            print("Koniec")
+        }
     }
-    */
+    
 
 }
