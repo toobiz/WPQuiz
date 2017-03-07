@@ -43,13 +43,13 @@ class API: NSObject {
                 print("No data was returned by the request!")
                 return
             }
-            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
+            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             
             guard let items = parsedResponse["items"] as? [[String:Any]] else {
                 print("Cannot find keys 'items' in parsedResponse")
                 return
             }
-            //            print(items)
+//            print(items)
             
 //            var titles = [String]()
 //            var urls = [String]()
@@ -112,9 +112,8 @@ class API: NSObject {
             
             for question in questionsDict {
                 if let text = question["text"] as? String  {
-                    //                    print(title)
+                    // print(title)
                     questions.append(text)
-                    
                 }
 
             }

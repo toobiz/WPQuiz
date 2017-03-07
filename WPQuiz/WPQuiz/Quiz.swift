@@ -10,14 +10,9 @@ import Foundation
 
 class Quiz {
     
-//    fileprivate var _key: String!
     fileprivate var _id: Int!
     fileprivate var _title: String!
     fileprivate var _url: String!
-    
-//    var key: String {
-//        return _key
-//    }
     
     var id: Int {
         return _id
@@ -34,7 +29,6 @@ class Quiz {
     // Initialize new Quiz
     
     init(dictionary: [String: AnyObject]) {
-//        self._key = key
         
         if let id = dictionary["id"] as? Int {
             self._id = id
