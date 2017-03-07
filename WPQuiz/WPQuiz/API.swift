@@ -14,7 +14,8 @@ class API: NSObject {
     
     var session: URLSession
     var quizzes = [String]()
-    
+    var urls = [String]()
+
     override init() {
         session = URLSession.shared
         super.init()
@@ -29,7 +30,7 @@ class API: NSObject {
         return Singleton.sharedInstance
     }
     
-    func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [String], _ errorString: String?) -> Void) {
+    func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [String], _ urls: [String], _ errorString: String?) -> Void) {
         
         let urlString = API.Constants.BASE_URL
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
@@ -70,9 +71,10 @@ class API: NSObject {
                 }
                 if let photoDict = item["mainPhoto"] as? [String:Any]  {
 //                    print(photoDict["url"]!)
+                    self.urls.append(photoDict["url"] as! String)
                 }
             }
-            completionHandler(true, self.quizzes, nil)
+            completionHandler(true, self.quizzes, self.urls, nil)
 //
 //            guard let buttonStart = items["buttonStart"] else {
 //                print("Cannot find keys 'buttonStart' in itemsDictionary")

@@ -11,6 +11,8 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var quizzes = [String]()
+    var urls = [String]()
+
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,14 +21,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
-        API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
+        API.sharedInstance().downloadListOfQuizzes { (success, quizzes, urls, error) in
             print(quizzes)
             self.quizzes = quizzes
+            self.urls = urls
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
         }
-        
     }
 
     // MARK: - TableView delegate
@@ -35,15 +37,35 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return quizzes.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath as IndexPath)
+        tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
         var title = String()
         if quizzes.count > 0 {
             title = quizzes[indexPath.row]
         }
-        cell.textLabel?.text = title
-        //        cell.imageView?.image = UIImage(named: "pin.png")
-        //        cell.detailTextLabel?.text = userInformation.mediaURL!
+        cell.quizTitle.text = title
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
+            
+            let imageString = self.urls[indexPath.row]
+            let imageURL = URL(string: imageString)
+            if let data = try? Data(contentsOf: imageURL!) {
+                
+                DispatchQueue.main.async(execute: {
+                    cell.quizPhoto.image = UIImage(data: data)
+//                    game.image = cell.gameImage.image
+                });
+                
+            } else {
+//                cell.gameImage.image = UIImage(named: "cover_placeholder")
+            }
+        })
+        
         return cell
     }
     

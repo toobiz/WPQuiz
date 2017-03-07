@@ -14,6 +14,8 @@
 		279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403471E6DACF100FF6416 /* LaunchScreen.storyboard */; };
 		279403531E6DB53E00FF6416 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403521E6DB53E00FF6416 /* API.swift */; };
 		279403551E6DB6FD00FF6416 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403541E6DB6FD00FF6416 /* Constants.swift */; };
+		279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403561E6EEB2F00FF6416 /* QuizCell.swift */; };
+		279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279403571E6EEB2F00FF6416 /* QuizCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		2794034A1E6DACF100FF6416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		279403521E6DB53E00FF6416 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		279403541E6DB6FD00FF6416 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		279403561E6EEB2F00FF6416 /* QuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
+		279403571E6EEB2F00FF6416 /* QuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				279403401E6DACF100FF6416 /* MainViewController.swift */,
+				279403561E6EEB2F00FF6416 /* QuizCell.swift */,
+				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +153,7 @@
 			files = (
 				279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */,
 				279403461E6DACF100FF6416 /* Assets.xcassets in Resources */,
+				279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */,
 				279403441E6DACF100FF6416 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +168,7 @@
 				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
+				279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */,
 				279403551E6DB6FD00FF6416 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
