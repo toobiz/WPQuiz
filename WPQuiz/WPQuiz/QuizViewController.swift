@@ -40,7 +40,7 @@ class QuizViewController: UIViewController {
     }
     
     @IBAction func showNextQuestion(_ sender: Any) {
-        if questions.count > currentPage + 1{
+        if questions.count > currentPage + 1 {
             questionLabel.text = questions[currentPage + 1]
             currentPage = currentPage + 1
         } else {

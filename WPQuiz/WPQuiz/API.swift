@@ -13,6 +13,7 @@ class API: NSObject {
     typealias CompletionHander = (_ result: AnyObject?, _ error: NSError?) -> Void
     
     var session: URLSession
+    var quizzes = [Quiz]()
 
     override init() {
         session = URLSession.shared
@@ -28,7 +29,7 @@ class API: NSObject {
         return Singleton.sharedInstance
     }
     
-    func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [String], _ urls: [String], _ errorString: String?) -> Void) {
+    func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [Quiz], _ errorString: String?) -> Void) {
         
         let urlString = API.Constants.LIST_URL
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
@@ -48,23 +49,41 @@ class API: NSObject {
                 print("Cannot find keys 'items' in parsedResponse")
                 return
             }
-//            print(items)
+            //            print(items)
             
-            var quizzes = [String]()
-            var urls = [String]()
-
+//            var titles = [String]()
+//            var urls = [String]()
+            
             for item in items {
-                if let title = item["title"] as? String  {
-//                    print(title)
-                    quizzes.append(title)
+                
+                var titleToAdd = String()
+                var urlToAdd = String()
+                var idToAdd = Double()
+                
+                if let id = item["id"] as? Double {
+                    idToAdd = id
                 }
-                if let photoDict = item["mainPhoto"] as? [String:Any]  {
-//                    print(photoDict["url"]!)
-                    urls.append(photoDict["url"] as! String)
+                
+                if let title = item["title"] as? String {
+                    titleToAdd = title
                 }
+                
+                if let photoDict = item["mainPhoto"] as? [String:Any] {
+                    urlToAdd = photoDict["url"] as! String
+                }
+                
+                let quizDict: [String : AnyObject] = [
+                    "id" : idToAdd as AnyObject,
+                    "title" : titleToAdd as AnyObject,
+                    "url" : urlToAdd as AnyObject
+                ]
+                
+                let quizToAdd = Quiz(dictionary: quizDict as [String : AnyObject])
+                self.quizzes.append(quizToAdd)
             }
-            completionHandler(true, quizzes, urls, nil)
-
+            
+            completionHandler(true, self.quizzes, nil)
+            
         }
         task.resume()
     }
@@ -95,6 +114,7 @@ class API: NSObject {
                 if let text = question["text"] as? String  {
                     //                    print(title)
                     questions.append(text)
+                    
                 }
 //                if let photoDict = item["mainPhoto"] as? [String:Any]  {
 //                    //                    print(photoDict["url"]!)

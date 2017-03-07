@@ -17,6 +17,7 @@
 		279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403561E6EEB2F00FF6416 /* QuizCell.swift */; };
 		279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279403571E6EEB2F00FF6416 /* QuizCell.xib */; };
 		2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */; };
+		2794035E1E6F403000FF6416 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035D1E6F403000FF6416 /* Quiz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		279403561E6EEB2F00FF6416 /* QuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
 		279403571E6EEB2F00FF6416 /* QuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizCell.xib; sourceTree = "<group>"; };
 		2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		2794035D1E6F403000FF6416 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +66,9 @@
 		2794033D1E6DACF100FF6416 /* WPQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				279403511E6DB4F900FF6416 /* ViewControllers */,
 				279403501E6DB4D600FF6416 /* API */,
+				2794035C1E6F3FE100FF6416 /* Model */,
+				279403511E6DB4F900FF6416 /* ViewControllers */,
 				2794033E1E6DACF100FF6416 /* AppDelegate.swift */,
 				279403421E6DACF100FF6416 /* Main.storyboard */,
 				279403451E6DACF100FF6416 /* Assets.xcassets */,
@@ -93,6 +96,14 @@
 				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2794035C1E6F3FE100FF6416 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2794035D1E6F403000FF6416 /* Quiz.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			files = (
 				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
+				2794035E1E6F403000FF6416 /* Quiz.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
 				2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */,
 				279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */,

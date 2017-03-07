@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var quizzes = [String]()
+    var quizzes = [Quiz]()
     var urls = [String]()
 
     @IBOutlet var tableView: UITableView!
@@ -21,10 +21,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
-        API.sharedInstance().downloadListOfQuizzes { (success, quizzes, urls, error) in
+        API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
 //            print(quizzes)
             self.quizzes = quizzes
-            self.urls = urls
+//            self.urls = urls
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
@@ -46,7 +46,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
         var title = String()
         if quizzes.count > 0 {
-            title = quizzes[indexPath.row]
+//            title = quizzes[indexPath.row]
         }
         cell.quizTitle.text = title
         
