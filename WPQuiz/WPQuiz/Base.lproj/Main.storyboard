@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCN-WA-TFk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCN-WA-TFk">
                                 <rect key="frame" x="0.0" y="-8" width="375" height="675"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="1207.2" y="83.208395802098963"/>
         </scene>
-        <!--View Controller-->
+        <!--Quiz View Controller-->
         <scene sceneID="jDy-OS-7gZ">
             <objects>
-                <viewController id="HkV-xq-skl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Quiz" id="HkV-xq-skl" customClass="QuizViewController" customModule="WPQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Djc-lR-1Kq"/>
                         <viewControllerLayoutGuide type="bottom" id="2CN-uH-Yn6"/>
@@ -56,10 +56,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nUm-rR-Go7">
+                        <barButtonItem key="rightBarButtonItem" title="Zakończ" id="SM7-De-chb">
+                            <connections>
+                                <action selector="endButton:" destination="HkV-xq-skl" id="nDA-82-sn5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFH-eH-6k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1953" y="82"/>
+            <point key="canvasLocation" x="1207" y="785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u5y-zQ-sEE">
@@ -78,6 +85,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItA-zw-FR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268" y="83.208395802098963"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4rY-4y-UAs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JuK-xR-Aj2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UYz-FB-1Qk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HkV-xq-skl" kind="relationship" relationship="rootViewController" id="FwE-O0-q0o"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dFB-Da-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="785"/>
         </scene>
     </scenes>
 </document>

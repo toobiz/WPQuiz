@@ -70,13 +70,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let userInformation = Users.sharedInstance().users[indexPath.row]
-//        let userLink = userInformation.mediaURL!
-//        if userLink.rangeOfString("http") != nil {
-//            UIApplication.sharedApplication().openURL(NSURL(string: "\(userLink)")!)
-//        } else {
-//            showAlert("Invalid link")
-//        }
+        let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
+        let navController = UINavigationController(rootViewController: quizView)
+        present(navController, animated: true, completion: nil)
     }
     
 //    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
