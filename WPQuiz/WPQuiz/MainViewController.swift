@@ -11,7 +11,6 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var quizzes = [Quiz]()
-    var urls = [String]()
 
     @IBOutlet var tableView: UITableView!
     
@@ -22,9 +21,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
-//            print(quizzes)
+            // print(quizzes)
             self.quizzes = quizzes
-//            self.urls = urls
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
@@ -44,25 +42,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
-        var title = String()
-        if quizzes.count > 0 {
-//            title = quizzes[indexPath.row]
+        
+        let quiz = quizzes[indexPath.row]
+        var titleString = String()
+        
+            if quizzes.count > 0 {
+            titleString = quiz.title
         }
-        cell.quizTitle.text = title
+        cell.quizTitle.text = titleString
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
             
-            let imageString = self.urls[indexPath.row]
+            let imageString = quiz.url
             let imageURL = URL(string: imageString)
             if let data = try? Data(contentsOf: imageURL!) {
                 
                 DispatchQueue.main.async(execute: {
                     cell.quizPhoto.image = UIImage(data: data)
-//                    game.image = cell.gameImage.image
                 });
                 
             } else {
-//                cell.gameImage.image = UIImage(named: "cover_placeholder")
+//                show placeholder
             }
         })
         
@@ -70,22 +70,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let quiz = quizzes[indexPath.row]
+        let quizId = "\(quiz.id)"
+        
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
+        quizView.quizId = quizId
         let navController = UINavigationController(rootViewController: quizView)
         self.present(navController, animated: true, completion: nil)
     }
-    
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        let userInformation = Users.sharedInstance().users[indexPath.row]
-//        let objectId = userInformation.objectId!
-//        tableView.beginUpdates()
-//        Users.sharedInstance().users.removeAtIndex(indexPath.row)
-//        ParseClient.sharedInstance().deleteStudentLocation(objectId)
-//        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-//        tableView.endUpdates()
-//        print("Deleted object \(objectId)")
-//    }
-
 
 }
 

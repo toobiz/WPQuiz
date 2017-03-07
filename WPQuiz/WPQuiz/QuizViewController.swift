@@ -12,6 +12,7 @@ class QuizViewController: UIViewController {
     
     var currentPage = Int()
     var questions = [String]()
+    var quizId = String()
     
     @IBOutlet var questionLabel: UILabel!
     
@@ -22,7 +23,7 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        API.sharedInstance().downloadQuiz(id: "6087919785886849") { (success, questions, error) in
+        API.sharedInstance().downloadQuiz(id: quizId) { (success, questions, error) in
             if success == true {
                 print(questions)
                 self.questions = questions

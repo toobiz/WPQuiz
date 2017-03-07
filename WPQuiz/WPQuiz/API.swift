@@ -58,9 +58,9 @@ class API: NSObject {
                 
                 var titleToAdd = String()
                 var urlToAdd = String()
-                var idToAdd = Double()
+                var idToAdd = Int()
                 
-                if let id = item["id"] as? Double {
+                if let id = item["id"] as? Int {
                     idToAdd = id
                 }
                 
@@ -101,7 +101,7 @@ class API: NSObject {
                 print("No data was returned by the request!")
                 return
             }
-            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! AnyObject
+            let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             
             guard let questionsDict = parsedResponse["questions"] as? [[String:Any]] else {
                 print("Cannot find keys 'questions' in parsedResponse")
@@ -116,10 +116,7 @@ class API: NSObject {
                     questions.append(text)
                     
                 }
-//                if let photoDict = item["mainPhoto"] as? [String:Any]  {
-//                    //                    print(photoDict["url"]!)
-//                    self.urls.append(photoDict["url"] as! String)
-//                }
+
             }
             print(questions)
             completionHandler(true, questions, nil)

@@ -11,7 +11,7 @@ import Foundation
 class Quiz {
     
 //    fileprivate var _key: String!
-    fileprivate var _id: Double!
+    fileprivate var _id: Int!
     fileprivate var _title: String!
     fileprivate var _url: String!
     
@@ -19,7 +19,7 @@ class Quiz {
 //        return _key
 //    }
     
-    var id: Double {
+    var id: Int {
         return _id
     }
     
@@ -36,7 +36,7 @@ class Quiz {
     init(dictionary: [String: AnyObject]) {
 //        self._key = key
         
-        if let id = dictionary["id"] as? Double {
+        if let id = dictionary["id"] as? Int {
             self._id = id
         }
         
