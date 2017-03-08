@@ -19,6 +19,7 @@
 		2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */; };
 		2794035E1E6F403000FF6416 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035D1E6F403000FF6416 /* Quiz.swift */; };
 		279403601E70101800FF6416 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035F1E70101800FF6416 /* Question.swift */; };
+		279403621E7014A500FF6416 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403611E7014A500FF6416 /* Answer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		2794035D1E6F403000FF6416 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		2794035F1E70101800FF6416 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		279403611E7014A500FF6416 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				2794035D1E6F403000FF6416 /* Quiz.swift */,
 				2794035F1E70101800FF6416 /* Question.swift */,
+				279403611E7014A500FF6416 /* Answer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
 				279403601E70101800FF6416 /* Question.swift in Sources */,
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
+				279403621E7014A500FF6416 /* Answer.swift in Sources */,
 				2794035E1E6F403000FF6416 /* Quiz.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
 				2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */,

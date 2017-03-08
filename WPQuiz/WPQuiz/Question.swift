@@ -10,9 +10,10 @@ import Foundation
 
 class Question {
     
-    fileprivate var _text: String!
-    fileprivate var _imageUrl: String?
-    fileprivate var _quiz: Quiz!
+    var _text: String!
+    var _imageUrl: String?
+    var _quiz: Quiz!
+    var _answers: [Answer]!
     
     var text: String {
         return _text
@@ -26,7 +27,11 @@ class Question {
         return _quiz
     }
     
-    // Initialize new Quiz
+    var answers: [Answer] {
+        return _answers
+    }
+    
+    // Initialize new Question
     
     init(dictionary: [String: AnyObject]) {
         
@@ -40,6 +45,10 @@ class Question {
         
         if let quiz = dictionary["quiz"] as? Quiz {
             self._quiz = quiz
+        }
+        
+        if let answers = dictionary["answers"] as? [Answer] {
+            self._answers = answers
         }
         
     }
