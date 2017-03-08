@@ -25,10 +25,10 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         API.sharedInstance().downloadQuiz(quiz: quiz) { (success, questions, error) in
             if success == true {
-                print(questions)
+//                print(questions)
                 self.questions = questions
                 DispatchQueue.main.async(execute: {
-//                    self.questionLabel.text = questions
+                    self.questionLabel.text = questions[0].text
                     self.currentPage = 0
                 });
             }
@@ -42,7 +42,7 @@ class QuizViewController: UIViewController {
     
     @IBAction func showNextQuestion(_ sender: Any) {
         if questions.count > currentPage + 1 {
-//            questionLabel.text = questions[currentPage + 1]
+            questionLabel.text = questions[currentPage + 1].text
             currentPage = currentPage + 1
         } else {
             print("Koniec")

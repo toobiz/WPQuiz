@@ -49,10 +49,6 @@ class API: NSObject {
                 print("Cannot find keys 'items' in parsedResponse")
                 return
             }
-//            print(items)
-            
-//            var titles = [String]()
-//            var urls = [String]()
             
             for item in items {
                 
@@ -108,33 +104,58 @@ class API: NSObject {
                 return
             }
             
-            var questions = [String]()
+            var questions = [Question]()
+            var answersToAdd = [Answer]()
             
             for item in items {
                 
+                var questionTextToAdd = String()
+                
                 if let text = item["text"] as? String  {
-                    //                    questions.append(text)
+                    questionTextToAdd = text
                     print(text)
                 }
                 
                 if let answers = item["answers"] as? [[String:Any]] {
                     
+                    
                     for answer in answers {
+                        
+                        var answerTextToAdd = String()
+                        var boolToAdd = Bool()
+                        
                         if let text = answer["text"] as? String {
+                            answerTextToAdd = text
                             print(text)
                         }
+                        
+                        if let bool = answer["isCorrect"] as? Bool {
+                            boolToAdd = bool
+                            print(bool)
+                        }
+                        
+                        let answerDict: [String : AnyObject] = [
+                            "text" : answerTextToAdd as AnyObject,
+                            "isCorrect" : boolToAdd as AnyObject,
+                            ]
+                        
+                        let answerToAdd = Answer(dictionary: answerDict)
+                        answersToAdd.append(answerToAdd)
                     }
                     
-//                    print(answersDict)
                 }
                 
-
+                let questionDict: [String : AnyObject] = [
+                    "text" : questionTextToAdd as AnyObject,
+                    "quiz" : quiz,
+                    "answers" : answersToAdd as AnyObject
+                    ]
                 
-
+                let questionToAdd = Question(dictionary: questionDict)
+                questions.append(questionToAdd)
             }
             
-            
-//            completionHandler(true, questions, nil)
+            completionHandler(true, questions, nil)
             
         }
         task.resume()
