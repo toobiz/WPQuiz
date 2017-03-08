@@ -10,9 +10,10 @@ import Foundation
 
 class Quiz {
     
-    fileprivate var _id: Int!
-    fileprivate var _title: String!
-    fileprivate var _url: String!
+    var _id: Int!
+    var _title: String!
+    var _url: String!
+    var _questions: [Question]?
     
     var id: Int {
         return _id
@@ -24,6 +25,10 @@ class Quiz {
     
     var url: String {
         return _url
+    }
+    
+    var questions: [Question] {
+        return _questions!
     }
     
     // Initialize new Quiz
@@ -40,6 +45,10 @@ class Quiz {
         
         if let url = dictionary["url"] as? String {
             self._url = url
+        }
+        
+        if let questions = dictionary["questions"] as? [Question] {
+            self._questions = questions
         }
         
     }

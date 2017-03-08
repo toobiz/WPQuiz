@@ -18,6 +18,7 @@
 		279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279403571E6EEB2F00FF6416 /* QuizCell.xib */; };
 		2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */; };
 		2794035E1E6F403000FF6416 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035D1E6F403000FF6416 /* Quiz.swift */; };
+		279403601E70101800FF6416 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794035F1E70101800FF6416 /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		279403571E6EEB2F00FF6416 /* QuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizCell.xib; sourceTree = "<group>"; };
 		2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		2794035D1E6F403000FF6416 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		2794035F1E70101800FF6416 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				2794035D1E6F403000FF6416 /* Quiz.swift */,
+				2794035F1E70101800FF6416 /* Question.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
+				279403601E70101800FF6416 /* Question.swift in Sources */,
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
 				2794035E1E6F403000FF6416 /* Quiz.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
