@@ -77,6 +77,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="259" id="WnS-sa-J8Y"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnswerCell" id="ows-QQ-WCx">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ows-QQ-WCx" id="pM8-ea-bPj">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEX-Da-6TP">
                                 <rect key="frame" x="133" y="610" width="108" height="37"/>
@@ -115,6 +125,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="questionLabel" destination="2eh-Kk-evi" id="a4l-Nj-BUi"/>
+                        <outlet property="tableView" destination="jxI-Qa-jsP" id="omR-dH-HhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFH-eH-6k5" userLabel="First Responder" sceneMemberID="firstResponder"/>

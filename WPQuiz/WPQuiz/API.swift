@@ -105,12 +105,12 @@ class API: NSObject {
             }
             
             var questions = [Question]()
-            var answersToAdd = [Answer]()
             
             for item in items {
                 
                 var questionTextToAdd = String()
-                
+                var answersToAdd = [Answer]()
+
                 if let text = item["text"] as? String  {
                     questionTextToAdd = text
                     print(text)
