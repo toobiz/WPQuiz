@@ -7,13 +7,14 @@
 //
 
 import Foundation
+//import CoreData
 
 class Quiz {
     
-    var _id: Int!
-    var _title: String!
-    var _url: String!
-    var _questions: [Question]?
+    fileprivate var _id: Int!
+    fileprivate var _title: String!
+    fileprivate var _url: String!
+    fileprivate var _questions: [Question]?
     
     var id: Int {
         return _id
@@ -32,8 +33,11 @@ class Quiz {
     }
     
     // Initialize new Quiz
-    
     init(dictionary: [String: AnyObject]) {
+
+//    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+//        let entity =  NSEntityDescription.entity(forEntityName: "Quiz", in: context)!
+//        super.init(entity: entity, insertInto: context)
         
         if let id = dictionary["id"] as? Int {
             self._id = id

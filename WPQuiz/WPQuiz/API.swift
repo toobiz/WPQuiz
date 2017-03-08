@@ -88,8 +88,8 @@ class API: NSObject {
         task.resume()
     }
     
-    func downloadQuiz(id: String, completionHandler: @escaping (_ success: Bool, _ questions: [String], _ errorString: String?) -> Void) {
-        let urlString = API.Constants.QUIZ_URL + id + "/0"
+    func downloadQuiz(quiz: Quiz, completionHandler: @escaping (_ success: Bool, _ questions: [Question], _ errorString: String?) -> Void) {
+        let urlString = API.Constants.QUIZ_URL + "\(quiz.id)" + "/0"
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
@@ -103,22 +103,38 @@ class API: NSObject {
             }
             let parsedResponse = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             
-            guard let questionsDict = parsedResponse["questions"] as? [[String:Any]] else {
+            guard let items = parsedResponse["questions"] as? [[String:Any]] else {
                 print("Cannot find keys 'questions' in parsedResponse")
                 return
             }
-//            print(questionsDict)
+            
             var questions = [String]()
             
-            for question in questionsDict {
-                if let text = question["text"] as? String  {
-                    // print(title)
-                    questions.append(text)
+            for item in items {
+                
+                if let text = item["text"] as? String  {
+                    //                    questions.append(text)
+                    print(text)
                 }
+                
+                if let answers = item["answers"] as? [[String:Any]] {
+                    
+                    for answer in answers {
+                        if let text = answer["text"] as? String {
+                            print(text)
+                        }
+                    }
+                    
+//                    print(answersDict)
+                }
+                
+
+                
 
             }
-            print(questions)
-            completionHandler(true, questions, nil)
+            
+            
+//            completionHandler(true, questions, nil)
             
         }
         task.resume()

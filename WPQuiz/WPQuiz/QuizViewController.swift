@@ -11,8 +11,8 @@ import UIKit
 class QuizViewController: UIViewController {
     
     var currentPage = Int()
-    var questions = [String]()
-    var quizId = String()
+    var questions = [Question]()
+    var quiz : Quiz!
     
     @IBOutlet var questionLabel: UILabel!
     
@@ -23,12 +23,12 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        API.sharedInstance().downloadQuiz(id: quizId) { (success, questions, error) in
+        API.sharedInstance().downloadQuiz(quiz: quiz) { (success, questions, error) in
             if success == true {
                 print(questions)
                 self.questions = questions
                 DispatchQueue.main.async(execute: {
-                    self.questionLabel.text = questions[0]
+//                    self.questionLabel.text = questions
                     self.currentPage = 0
                 });
             }
@@ -42,7 +42,7 @@ class QuizViewController: UIViewController {
     
     @IBAction func showNextQuestion(_ sender: Any) {
         if questions.count > currentPage + 1 {
-            questionLabel.text = questions[currentPage + 1]
+//            questionLabel.text = questions[currentPage + 1]
             currentPage = currentPage + 1
         } else {
             print("Koniec")

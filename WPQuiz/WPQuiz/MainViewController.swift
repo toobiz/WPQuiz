@@ -71,10 +71,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let quiz = quizzes[indexPath.row]
-        let quizId = "\(quiz.id)"
         
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
-        quizView.quizId = quizId
+        quizView.quiz = quiz
         let navController = UINavigationController(rootViewController: quizView)
         self.present(navController, animated: true, completion: nil)
     }
