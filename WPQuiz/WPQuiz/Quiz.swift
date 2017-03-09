@@ -7,9 +7,10 @@
 //
 
 import Foundation
-//import CoreData
+import CoreData
 
-class Quiz {
+@objc (Quiz)
+class Quiz: NSManagedObject {
     
     var _id: Int!
     var _title: String!
@@ -43,11 +44,11 @@ class Quiz {
     }
     
     // Initialize new Quiz
-    init(dictionary: [String: AnyObject]) {
+//    init(dictionary: [String: AnyObject]) {
 
-//    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
-//        let entity =  NSEntityDescription.entity(forEntityName: "Quiz", in: context)!
-//        super.init(entity: entity, insertInto: context)
+    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+        let entity =  NSEntityDescription.entity(forEntityName: "Quiz", in: context)!
+        super.init(entity: entity, insertInto: context)
         
         if let id = dictionary["id"] as? Int {
             self._id = id

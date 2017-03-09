@@ -10,6 +10,8 @@
 		270412FE1E716A8E003389C7 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412FC1E716A8E003389C7 /* AnswerCell.swift */; };
 		270412FF1E716A8E003389C7 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270412FD1E716A8E003389C7 /* AnswerCell.xib */; };
 		270413011E71A3AF003389C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270413001E71A3AF003389C7 /* ResultViewController.swift */; };
+		270413031E71BE6E003389C7 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270413021E71BE6E003389C7 /* CoreDataStackManager.swift */; };
+		270413091E71C227003389C7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 270413071E71C227003389C7 /* DataModel.xcdatamodeld */; };
 		2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794033E1E6DACF100FF6416 /* AppDelegate.swift */; };
 		279403411E6DACF100FF6416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403401E6DACF100FF6416 /* MainViewController.swift */; };
 		279403441E6DACF100FF6416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403421E6DACF100FF6416 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		270412FC1E716A8E003389C7 /* AnswerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		270412FD1E716A8E003389C7 /* AnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
 		270413001E71A3AF003389C7 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		270413021E71BE6E003389C7 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		270413081E71C227003389C7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		2794033B1E6DACF100FF6416 /* WPQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2794033E1E6DACF100FF6416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279403401E6DACF100FF6416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 		2794035C1E6F3FE100FF6416 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				270413071E71C227003389C7 /* DataModel.xcdatamodeld */,
+				270413021E71BE6E003389C7 /* CoreDataStackManager.swift */,
 				2794035D1E6F403000FF6416 /* Quiz.swift */,
 				2794035F1E70101800FF6416 /* Question.swift */,
 				279403611E7014A500FF6416 /* Answer.swift */,
@@ -201,10 +207,12 @@
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
 				279403621E7014A500FF6416 /* Answer.swift in Sources */,
 				2794035E1E6F403000FF6416 /* Quiz.swift in Sources */,
+				270413031E71BE6E003389C7 /* CoreDataStackManager.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
 				2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */,
 				279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */,
 				279403551E6DB6FD00FF6416 /* Constants.swift in Sources */,
+				270413091E71C227003389C7 /* DataModel.xcdatamodeld in Sources */,
 				270412FE1E716A8E003389C7 /* AnswerCell.swift in Sources */,
 				270413011E71A3AF003389C7 /* ResultViewController.swift in Sources */,
 			);
@@ -373,6 +381,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		270413071E71C227003389C7 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				270413081E71C227003389C7 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 270413081E71C227003389C7 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 279403331E6DACF100FF6416 /* Project object */;
 }

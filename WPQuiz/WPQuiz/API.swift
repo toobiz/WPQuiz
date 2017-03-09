@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class API: NSObject {
     
@@ -28,6 +29,10 @@ class API: NSObject {
         }
         return Singleton.sharedInstance
     }
+    
+    lazy var sharedContext: NSManagedObjectContext =  {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
     
     func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [Quiz], _ errorString: String?) -> Void) {
         
@@ -74,7 +79,8 @@ class API: NSObject {
                     "url" : urlToAdd as AnyObject
                 ]
                 
-                let quizToAdd = Quiz(dictionary: quizDict as [String : AnyObject])
+//                let quizToAdd = Quiz(dictionary: quizDict as [String : AnyObject])
+                let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
                 self.quizzes.append(quizToAdd)
             }
             
