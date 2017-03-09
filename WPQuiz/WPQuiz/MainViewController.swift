@@ -19,9 +19,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
-            // print(quizzes)
             self.quizzes = quizzes
             DispatchQueue.main.async() {
                 self.tableView.reloadData()

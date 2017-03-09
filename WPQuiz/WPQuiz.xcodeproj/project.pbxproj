@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270412FE1E716A8E003389C7 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270412FC1E716A8E003389C7 /* AnswerCell.swift */; };
+		270412FF1E716A8E003389C7 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270412FD1E716A8E003389C7 /* AnswerCell.xib */; };
 		2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794033E1E6DACF100FF6416 /* AppDelegate.swift */; };
 		279403411E6DACF100FF6416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403401E6DACF100FF6416 /* MainViewController.swift */; };
 		279403441E6DACF100FF6416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403421E6DACF100FF6416 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270412FC1E716A8E003389C7 /* AnswerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		270412FD1E716A8E003389C7 /* AnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
 		2794033B1E6DACF100FF6416 /* WPQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2794033E1E6DACF100FF6416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279403401E6DACF100FF6416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */,
 				279403561E6EEB2F00FF6416 /* QuizCell.swift */,
 				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
+				270412FC1E716A8E003389C7 /* AnswerCell.swift */,
+				270412FD1E716A8E003389C7 /* AnswerCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 			files = (
 				279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */,
 				279403461E6DACF100FF6416 /* Assets.xcassets in Resources */,
+				270412FF1E716A8E003389C7 /* AnswerCell.xib in Resources */,
 				279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */,
 				279403441E6DACF100FF6416 /* Main.storyboard in Resources */,
 			);
@@ -195,6 +202,7 @@
 				2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */,
 				279403581E6EEB2F00FF6416 /* QuizCell.swift in Sources */,
 				279403551E6DB6FD00FF6416 /* Constants.swift in Sources */,
+				270412FE1E716A8E003389C7 /* AnswerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +366,7 @@
 				2794034F1E6DACF100FF6416 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,13 +15,13 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var quiz : Quiz!
     
     @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var progressView: UIProgressView!
     
     @IBAction func endButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,10 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - TableView delegate
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if questions.count > 0 {
             return questions[currentPage].answers.count
@@ -83,20 +87,25 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath as IndexPath)
+        tableView.register(UINib(nibName: "AnswerCell", bundle: nil), forCellReuseIdentifier: "AnswerCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath as IndexPath) as! AnswerCell
+        cell.accessoryType = .none
         
         if questions.count > 0 {
             let question = questions[currentPage]
             let answers = question.answers
-            cell.textLabel?.text = answers[indexPath.row].text
+            cell.label.text = answers[indexPath.row].text
         }
 
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.accessoryType = .checkmark
+        }
     }
 
 }
