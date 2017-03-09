@@ -34,6 +34,21 @@ class API: NSObject {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }()
     
+    func fetchAllQuizzes() -> [Quiz] {
+        
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "gameTitle", ascending: true)]
+        
+        // Execute the Fetch Request
+        do {
+            return try sharedContext.fetch(fetchRequest) as! [Quiz]
+        } catch  let error as NSError {
+            print("Error in fetchAllQuizzes(): \(error)")
+            return [Quiz]()
+        }
+    }
+    
     func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [Quiz], _ errorString: String?) -> Void) {
         
         let urlString = API.Constants.LIST_URL
@@ -55,13 +70,15 @@ class API: NSObject {
                 return
             }
             
+            let elements = self.fetchAllQuizzes()
+            
             for item in items {
                 
                 var titleToAdd = String()
                 var urlToAdd = String()
-                var idToAdd = Int()
+                var idToAdd = NSNumber()
                 
-                if let id = item["id"] as? Int {
+                if let id = item["id"] as? NSNumber {
                     idToAdd = id
                 }
                 
@@ -79,11 +96,23 @@ class API: NSObject {
                     "url" : urlToAdd as AnyObject
                 ]
                 
-//                let quizToAdd = Quiz(dictionary: quizDict as [String : AnyObject])
-                let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
-                self.quizzes.append(quizToAdd)
-            }
+//                if self.quizzes.count == 0 {
+//                    let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
+//                    CoreDataStackManager.sharedInstance().saveContext()
+//                    self.quizzes.append(quizToAdd)
+//                } else {
+                    for element in elements {
+                        if Int(element.id) != Int(idToAdd)  {
+                            print("Dodajemy quiz to bazy")
+                            let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
+                            self.quizzes.append(quizToAdd)
+                        }
+                    }
+//            }
             
+
+            }
+            CoreDataStackManager.sharedInstance().saveContext()
             completionHandler(true, self.quizzes, nil)
             
         }

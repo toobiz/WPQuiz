@@ -12,66 +12,46 @@ import CoreData
 @objc (Quiz)
 class Quiz: NSManagedObject {
     
-    var _id: Int!
-    var _title: String!
-    var _url: String!
-//    var _questions: [Question]?
-    var _progress: Int?
-    var _score: Int?
-    
-    var id: Int {
-        return _id
-    }
-    
-    var title: String {
-        return _title
-    }
-    
-    var url: String {
-        return _url
-    }
-    
-//    var questions: [Question] {
-//        return _questions!
+//    struct Keys {
+//        static let id = "id"
+//        static let title = "title"
+//        static let url = "url"
+//        static let progress = "progress"
+//        static let score = "score"
 //    }
     
-    var progress: Int {
-        return _progress!
-    }
+    @NSManaged var id: NSNumber
+    @NSManaged var title: String
+    @NSManaged var url: String
+    @NSManaged var progress: NSNumber
+    @NSManaged var score: NSNumber
     
-    var score: Int {
-        return _score!
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
-    
-    // Initialize new Quiz
-//    init(dictionary: [String: AnyObject]) {
 
     init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
         let entity =  NSEntityDescription.entity(forEntityName: "Quiz", in: context)!
         super.init(entity: entity, insertInto: context)
         
-        if let id = dictionary["id"] as? Int {
-            self._id = id
+        if let quiz_id = dictionary["id"] {
+            id = quiz_id as! NSNumber
         }
         
-        if let title = dictionary["title"] as? String {
-            self._title = title
+        if let quiz_title = dictionary["title"] {
+            title = quiz_title as! String
         }
         
-        if let url = dictionary["url"] as? String {
-            self._url = url
+        if let quiz_url = dictionary["url"] {
+            url = quiz_url as! String
         }
         
-//        if let questions = dictionary["questions"] as? [Question] {
-//            self._questions = questions
-//        }
-        
-        if let progress = dictionary["progress"] as? Int {
-            self._progress = progress
+        if let quiz_progress = dictionary["progress"] {
+            progress = quiz_progress as! NSNumber
         }
         
-        if let score = dictionary["score"] as? Int {
-            self._score = score
+        if let quiz_score = dictionary["score"] {
+            score = quiz_score as! NSNumber
         }
     }
     
