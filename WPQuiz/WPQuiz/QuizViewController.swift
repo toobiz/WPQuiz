@@ -31,6 +31,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
+        progressView?.progress = 0
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         API.sharedInstance().downloadQuiz(quiz: quiz) { (success, questions, error) in
             if success == true {
                 self.questions = questions
@@ -42,11 +47,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 });
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func showNextQuestion(_ sender: Any) {
@@ -60,6 +60,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             let resultView = self.storyboard!.instantiateViewController(withIdentifier: "Result") as! ResultViewController
             let finalScore = totalScore/Float(questions.count)
             resultView.totalScore = Float(finalScore)
+            resultView.quizView = self
             self.present(resultView, animated: true, completion: nil)
             print("Koniec")
             print("Twój wynik:  \(finalScore)")
@@ -109,10 +110,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        if let cell = tableView.cellForRow(at: indexPath) {
-//        }
+
         let question = questions[currentPage]
         let answer = question.answers[indexPath.row]
         let isCorrect = answer.isCorrect

@@ -11,6 +11,7 @@ import UIKit
 class ResultViewController: UIViewController {
 
     var totalScore = Float()
+    var quizView = QuizViewController()
     
     @IBOutlet var resultTitleLabel: UILabel!
     @IBOutlet var resultScoreLabel: UILabel!
@@ -18,7 +19,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultScoreLabel.text = String(Int(totalScore * 100)) + "%"
+        resultScoreLabel.text = String(Int(round(totalScore * 100))) + "%"
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,9 +28,15 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func goToList(_ sender: Any) {
+        dismiss(animated: true, completion: {
+            self.quizView.dismiss(animated: true, completion: nil)
+        })
     }
     
     @IBAction func tryAgain(_ sender: Any) {
+        dismiss(animated: true, completion: {
+            self.quizView.currentPage = 0
+        })
     }
     
 
