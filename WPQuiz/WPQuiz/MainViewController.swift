@@ -41,6 +41,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
+        cell.selectionStyle = .none
         
         let quiz = quizzes[indexPath.row]
         var titleString = String()
@@ -69,8 +70,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let quiz = quizzes[indexPath.row]
-        
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
         quizView.quiz = quiz
         let navController = UINavigationController(rootViewController: quizView)
