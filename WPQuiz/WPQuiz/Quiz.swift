@@ -11,10 +11,12 @@ import Foundation
 
 class Quiz {
     
-    fileprivate var _id: Int!
-    fileprivate var _title: String!
-    fileprivate var _url: String!
-    fileprivate var _questions: [Question]?
+    var _id: Int!
+    var _title: String!
+    var _url: String!
+//    var _questions: [Question]?
+    var _progress: Int?
+    var _score: Int?
     
     var id: Int {
         return _id
@@ -28,8 +30,16 @@ class Quiz {
         return _url
     }
     
-    var questions: [Question] {
-        return _questions!
+//    var questions: [Question] {
+//        return _questions!
+//    }
+    
+    var progress: Int {
+        return _progress!
+    }
+    
+    var score: Int {
+        return _score!
     }
     
     // Initialize new Quiz
@@ -51,10 +61,17 @@ class Quiz {
             self._url = url
         }
         
-        if let questions = dictionary["questions"] as? [Question] {
-            self._questions = questions
+//        if let questions = dictionary["questions"] as? [Question] {
+//            self._questions = questions
+//        }
+        
+        if let progress = dictionary["progress"] as? Int {
+            self._progress = progress
         }
         
+        if let score = dictionary["score"] as? Int {
+            self._score = score
+        }
     }
     
 }
