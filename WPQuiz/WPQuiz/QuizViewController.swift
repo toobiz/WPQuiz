@@ -13,6 +13,8 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentPage = Int()
     var questions = [Question]()
     var quiz : Quiz!
+    var totalScore = Int()
+    var answerIsChosen = false
     
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
@@ -53,8 +55,10 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             currentPage = currentPage + 1
             updateProgress()
             tableView.reloadData()
+            answerIsChosen = false
         } else {
             print("Koniec")
+            print("Twój wynik:  \(totalScore)")
         }
     }
     
@@ -88,6 +92,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "AnswerCell", bundle: nil), forCellReuseIdentifier: "AnswerCell")
+        tableView.allowsMultipleSelection = false
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath as IndexPath) as! AnswerCell
         cell.accessoryType = .none
         
@@ -96,16 +101,37 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             let answers = question.answers
             cell.label.text = answers[indexPath.row].text
         }
-
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
-        tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        if let cell = tableView.cellForRow(at: indexPath) {
+//        }
+        let question = questions[currentPage]
+        let answer = question.answers[indexPath.row]
+        let isCorrect = answer.isCorrect
+        if isCorrect == true {
+            if answerIsChosen == false {
+                print("Wybrano poprawną odpowiedź")
+                totalScore += 1
+                answerIsChosen = true
+            }
         }
+        if isCorrect == false {
+            print("Niepoprawna odpowiedź")
+            if answerIsChosen == true {
+                totalScore -= 1
+                print("Odznaczono poprawną odpowiedź")
+                answerIsChosen = false
+            }
+        }
+        print(totalScore)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
     }
 
 }

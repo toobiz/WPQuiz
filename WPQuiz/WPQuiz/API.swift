@@ -113,7 +113,7 @@ class API: NSObject {
 
                 if let text = item["text"] as? String  {
                     questionTextToAdd = text
-                    print(text)
+//                    print(text)
                 }
                 
                 if let answers = item["answers"] as? [[String:Any]] {
@@ -126,12 +126,12 @@ class API: NSObject {
                         
                         if let text = answer["text"] as? String {
                             answerTextToAdd = text
-                            print(text)
+//                            print(text)
                         }
                         
                         if let bool = answer["isCorrect"] as? Bool {
                             boolToAdd = bool
-                            print(bool)
+//                            print(bool)
                         }
                         
                         let answerDict: [String : AnyObject] = [
