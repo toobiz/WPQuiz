@@ -82,7 +82,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ows-QQ-WCx" id="pM8-ea-bPj">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -124,6 +124,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="progressView" destination="zBl-Wd-xpG" id="1U8-pT-nZD"/>
                         <outlet property="questionLabel" destination="2eh-Kk-evi" id="a4l-Nj-BUi"/>
                         <outlet property="tableView" destination="jxI-Qa-jsP" id="omR-dH-HhJ"/>
                     </connections>

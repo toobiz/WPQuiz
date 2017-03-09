@@ -16,6 +16,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var progressView: UIProgressView!
     
     @IBAction func endButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -35,6 +36,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.questionLabel.text = questions[self.currentPage].text
                     self.currentPage = 0
                     self.tableView.reloadData()
+                    self.updateProgress()
                 });
             }
         }
@@ -49,16 +51,31 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         if questions.count > currentPage + 1 {
             questionLabel.text = questions[currentPage + 1].text
             currentPage = currentPage + 1
+            updateProgress()
             tableView.reloadData()
         } else {
             print("Koniec")
         }
     }
     
+    func updateProgress() {
+        var totalPages = Int()
+        if questions.count > 0 {
+            totalPages = questions.count
+        } else {
+            totalPages = 0
+        }
+        progressView?.progress = Float(currentPage + 1) / Float(totalPages)
+    }
+    
     // MARK: - TableView delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if questions.count > 0 {
+            return questions[currentPage].answers.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

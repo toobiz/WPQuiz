@@ -144,6 +144,7 @@
 				TargetAttributes = {
 					2794033A1E6DACF100FF6416 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AFD55YHYZ6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -316,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AFD55YHYZ6;
 				INFOPLIST_FILE = WPQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.tubis.wpquiz.WPQuiz;
@@ -328,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AFD55YHYZ6;
 				INFOPLIST_FILE = WPQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.tubis.wpquiz.WPQuiz;
