@@ -36,6 +36,7 @@ class ResultViewController: UIViewController {
     @IBAction func tryAgain(_ sender: Any) {
         dismiss(animated: true, completion: {
             self.quizView.currentPage = 0
+            self.quizView.totalScore = 0
         })
     }
     
