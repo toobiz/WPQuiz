@@ -13,7 +13,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentPage = Int()
     var questions = [Question]()
     var quiz : Quiz!
-    var totalScore = Int()
+    var totalScore = Float()
     var answerIsChosen = false
     
     @IBOutlet var questionLabel: UILabel!
@@ -57,8 +57,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.reloadData()
             answerIsChosen = false
         } else {
+            let resultView = self.storyboard!.instantiateViewController(withIdentifier: "Result") as! ResultViewController
+            let finalScore = totalScore/Float(questions.count)
+            resultView.totalScore = Float(finalScore)
+            self.present(resultView, animated: true, completion: nil)
             print("Koniec")
-            print("Twój wynik:  \(totalScore)")
+            print("Twój wynik:  \(finalScore)")
         }
     }
     

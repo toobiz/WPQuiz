@@ -167,5 +167,85 @@
             </objects>
             <point key="canvasLocation" x="268" y="785"/>
         </scene>
+        <!--Result View Controller-->
+        <scene sceneID="K15-ZG-YVe">
+            <objects>
+                <viewController storyboardIdentifier="Result" id="RUC-yv-WHQ" customClass="ResultViewController" customModule="WPQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0ib-Ov-FPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gko-Mk-NTz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Tj-Sl-a8s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wynik:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVo-nQ-GhZ">
+                                <rect key="frame" x="16" y="28" width="343" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="UtE-uV-O9K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvt-YA-Jue">
+                                <rect key="frame" x="16" y="124" width="343" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="124" id="fRQ-xf-rgf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqy-dd-0I9">
+                                <rect key="frame" x="96" y="339" width="182" height="37"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="T0d-NW-hbY"/>
+                                    <constraint firstAttribute="width" constant="182" id="kEN-Fa-QMy"/>
+                                </constraints>
+                                <state key="normal" title="Rozwiąż jeszcze raz"/>
+                                <connections>
+                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="e67-mX-rcQ"/>
+                                    <action selector="tryAgain:" destination="RUC-yv-WHQ" eventType="touchUpInside" id="yRO-uf-HmS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6U-A7-JBX">
+                                <rect key="frame" x="96" y="284" width="182" height="37"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="aj2-Pa-S2j"/>
+                                    <constraint firstAttribute="height" constant="37" id="e62-c1-zZv"/>
+                                </constraints>
+                                <state key="normal" title="Przejdź do listy quizów"/>
+                                <connections>
+                                    <action selector="goToList:" destination="RUC-yv-WHQ" eventType="touchUpInside" id="6GX-wy-hG9"/>
+                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="08c-xX-24Q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B6U-A7-JBX" firstAttribute="top" secondItem="Kvt-YA-Jue" secondAttribute="bottom" constant="36" id="238-ye-FJl"/>
+                            <constraint firstItem="UVo-nQ-GhZ" firstAttribute="leading" secondItem="1Tj-Sl-a8s" secondAttribute="leadingMargin" id="2Ja-mS-g41"/>
+                            <constraint firstItem="Dqy-dd-0I9" firstAttribute="centerX" secondItem="1Tj-Sl-a8s" secondAttribute="centerX" id="GId-Hr-25W"/>
+                            <constraint firstItem="Kvt-YA-Jue" firstAttribute="trailing" secondItem="1Tj-Sl-a8s" secondAttribute="trailingMargin" id="ami-OJ-5TT"/>
+                            <constraint firstItem="Dqy-dd-0I9" firstAttribute="top" secondItem="B6U-A7-JBX" secondAttribute="bottom" constant="18" id="btC-7k-4z6"/>
+                            <constraint firstItem="UVo-nQ-GhZ" firstAttribute="top" secondItem="0ib-Ov-FPe" secondAttribute="bottom" constant="8" id="eXq-pS-u2T"/>
+                            <constraint firstItem="UVo-nQ-GhZ" firstAttribute="trailing" secondItem="1Tj-Sl-a8s" secondAttribute="trailingMargin" id="hQv-gw-aej"/>
+                            <constraint firstItem="Kvt-YA-Jue" firstAttribute="leading" secondItem="1Tj-Sl-a8s" secondAttribute="leadingMargin" id="mC7-M4-AW6"/>
+                            <constraint firstItem="Kvt-YA-Jue" firstAttribute="top" secondItem="UVo-nQ-GhZ" secondAttribute="bottom" constant="40" id="t6P-Hy-o1q"/>
+                            <constraint firstItem="B6U-A7-JBX" firstAttribute="centerX" secondItem="1Tj-Sl-a8s" secondAttribute="centerX" id="wku-Jl-4yj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resultScoreLabel" destination="Kvt-YA-Jue" id="D7V-PU-O2e"/>
+                        <outlet property="resultTitleLabel" destination="UVo-nQ-GhZ" id="q9B-Za-t6c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0iN-Ao-nWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="1502.6986506746628"/>
+        </scene>
     </scenes>
 </document>
