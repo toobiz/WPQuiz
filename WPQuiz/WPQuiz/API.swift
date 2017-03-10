@@ -70,31 +70,48 @@ class API: NSObject {
                 return
             }
             
-            let elements = self.fetchAllQuizzes()
+            self.quizzes = self.fetchAllQuizzes()
+            var ids = [NSNumber]()
+            
+            for quiz in self.quizzes {
+                print(quiz.id)
+                ids.append(quiz.id)
+            }
             
             for item in items {
                 
-                var titleToAdd = String()
-                var urlToAdd = String()
                 var idToAdd = NSNumber()
                 
                 if let id = item["id"] as? NSNumber {
                     idToAdd = id
                 }
                 
-                if let title = item["title"] as? String {
-                    titleToAdd = title
+                if ids.contains(idToAdd) {
+                    print("Nie dodajemy")
+                } else {
+                    print("Dodajemy quiz to bazy")
+                    
+                    var titleToAdd = String()
+                    var urlToAdd = String()
+                    
+                    if let title = item["title"] as? String {
+                        titleToAdd = title
+                    }
+                    
+                    if let photoDict = item["mainPhoto"] as? [String:Any] {
+                        urlToAdd = photoDict["url"] as! String
+                    }
+                    
+                    let quizDict: [String : AnyObject] = [
+                        "id" : idToAdd as AnyObject,
+                        "title" : titleToAdd as AnyObject,
+                        "url" : urlToAdd as AnyObject
+                    ]
+                    
+                    let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
+                    CoreDataStackManager.sharedInstance().saveContext()
+                    self.quizzes.append(quizToAdd)
                 }
-                
-                if let photoDict = item["mainPhoto"] as? [String:Any] {
-                    urlToAdd = photoDict["url"] as! String
-                }
-                
-                let quizDict: [String : AnyObject] = [
-                    "id" : idToAdd as AnyObject,
-                    "title" : titleToAdd as AnyObject,
-                    "url" : urlToAdd as AnyObject
-                ]
                 
 //                if self.quizzes.count == 0 {
 //                    let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
@@ -103,10 +120,7 @@ class API: NSObject {
 //                } else {
 //                    for element in elements {
 //                        if Int(element.id) != Int(idToAdd)  {
-                            print("Dodajemy quiz to bazy")
-                            let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
-                            CoreDataStackManager.sharedInstance().saveContext()
-                            self.quizzes.append(quizToAdd)
+
 //                        }
 //                    }
 //            }
