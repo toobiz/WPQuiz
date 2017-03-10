@@ -95,7 +95,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if questions.count > 0 {
             totalPages = questions.count
-            totalProgress = Float(currentPage + 1) / Float(totalPages)
+            totalProgress = Float(currentPage) / Float(totalPages)
 
             let fetchResult = fetchQuiz()
             let fetchedQuiz = fetchResult[0]
