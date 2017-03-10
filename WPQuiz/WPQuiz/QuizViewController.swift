@@ -12,7 +12,9 @@ import CoreData
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var currentPage = Int()
+    var fetchedPage = Int()
     var questions = [Question]()
+    var quizId = NSNumber()
     var quiz : Quiz!
     var totalScore = Float()
     var finalScore = Float()
@@ -25,13 +27,16 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        quizView = (Bundle.main.loadNibNamed("QuizView", owner: self, options: nil)?.first as? QuizView)!
         resultView = (Bundle.main.loadNibNamed("ResultView", owner: self, options: nil)?.first as? ResultView)!
+        quizView = (Bundle.main.loadNibNamed("QuizView", owner: self, options: nil)?.first as? QuizView)!
         
         quizView.tableView.delegate = self
         quizView.tableView.dataSource = self
         
-//        progressView?.progress = 0
+        quizView.progressView?.progress = 0
+        
+        let fetchResult = fetchQuiz()
+        let quiz = fetchResult[0]
         
         API.sharedInstance().downloadQuiz(quiz: quiz) { (success, questions, error) in
             if success == true {
@@ -39,10 +44,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async(execute: {
 
 //                    self.totalScore = Float(self.quiz.score)
-//                    self.currentPage = Int(Float(self.quiz.progress!)/Float(self.questions.count))
-                    self.saveProgress()
+                    self.currentPage = Int(Float(quiz.progress!)/Float(self.questions.count))
+//                    self.currentPage = self.fetchedPage
+//                    self.saveProgress()
+//                    self.currentPage = 0
                     self.updateView()
-//                    self.reloadQuizData()
                 });
             }
         }
@@ -50,7 +56,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func updateView() {
         
-        if currentPage == questions.count {
+        if currentPage >= questions.count {
             contentView.addSubview(resultView)
             saveScore()
         } else {
@@ -63,40 +69,35 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         quizView.questionLabel.text = questions[currentPage].text
         quizView.tableView.reloadData()
+        quizView.progressView?.progress = setProgress()
     }
     
     func saveScore() {
         
         let fetchResult = fetchQuiz()
         let fetchedQuiz = fetchResult[0]
-        fetchedQuiz.setValue(0, forKey: "score")
-        fetchedQuiz.setValue(NSNumber(value: round(setScore())), forKey: "score")
+        fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
         CoreDataStackManager.sharedInstance().saveContext()
     }
     
     func saveProgress() {
         
-        if questions.count > 0 {
-            
-            let fetchResult = fetchQuiz()
-            let fetchedQuiz = fetchResult[0]
-            fetchedQuiz.setValue(0, forKey: "progress")
-            fetchedQuiz.setValue(NSNumber(value: round(setProgress())), forKey: "progress")
-            CoreDataStackManager.sharedInstance().saveContext()
-            print(totalProgress)
-        }
-        quizView.progressView?.progress = totalProgress
+        let fetchResult = fetchQuiz()
+        let fetchedQuiz = fetchResult[0]
+        fetchedQuiz.setValue(NSNumber(value: round(setProgress()*100)), forKey: "progress")
+        CoreDataStackManager.sharedInstance().saveContext()
+        print(totalProgress)
     }
     
     func setProgress() -> Float {
         let totalPages = questions.count
         totalProgress = Float(currentPage) / Float(totalPages)
-        return totalProgress * 100
+        return totalProgress
     }
     
     func setScore() -> Float {
         let finalScore = totalScore/Float(questions.count)
-        return finalScore * 100
+        return finalScore
     }
     
     // MARK: - TableView delegate
@@ -106,7 +107,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if questions.count > 0 {
+        if questions.count > 0 && currentPage < questions.count {
             return questions[currentPage].answers.count
         } else {
             return 0
@@ -137,8 +138,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
 //        print(totalScore)
-        
-        currentPage = currentPage + 1
+        if currentPage < questions.count {
+            currentPage = currentPage + 1
+        }
         
         saveProgress()
         updateView()
@@ -153,7 +155,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     func fetchQuiz() -> [Quiz] {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
-        let predicate = NSPredicate(format: "%K == %@", "id", quiz.id)
+        let predicate = NSPredicate(format: "%K == %@", "id", quizId)
         fetchRequest.predicate = predicate
         
         do {

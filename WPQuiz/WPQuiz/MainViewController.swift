@@ -112,7 +112,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         let quiz = quizzes[indexPath.row]
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
-        quizView.quiz = quiz
+        quizView.quizId = quiz.id
 //        let navController = UINavigationController(rootViewController: quizView)
         navigationController?.pushViewController(quizView, animated: true)
         print("Wybrano quiz no. \(quiz.id)")

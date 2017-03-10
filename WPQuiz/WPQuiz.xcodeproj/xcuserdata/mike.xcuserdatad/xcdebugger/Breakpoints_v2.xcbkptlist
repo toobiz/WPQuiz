@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184">
+            startingLineNumber = "186"
+            endingLineNumber = "186">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170">
+            startingLineNumber = "172"
+            endingLineNumber = "172">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -150,11 +150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "QuizViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -246,27 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873170.477446"
+            timestampString = "510877641.201477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "updateView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510872717.229506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,11 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873848.878508"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "saveProgress()"
             landmarkType = "7">
          </BreakpointContent>
@@ -294,11 +278,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873493.527225"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "saveScore()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WPQuiz/QuizViewController.swift"
+            timestampString = "510878741.592583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -306,16 +306,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WPQuiz/QuizViewController.swift"
-            timestampString = "510873731.206326"
+            timestampString = "510878741.592583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "saveScore()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WPQuiz/QuizViewController.swift"
+            timestampString = "510878741.592583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "reloadQuizData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
