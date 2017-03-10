@@ -91,18 +91,21 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func updateProgress() {
         var totalPages = Int()
+        var totalProgress = Float()
+        
         if questions.count > 0 {
-            
+            totalPages = questions.count
+            totalProgress = Float(currentPage + 1) / Float(totalPages)
+
             let fetchResult = fetchQuiz()
             let fetchedQuiz = fetchResult[0]
-            fetchedQuiz.setValue(currentPage + 1 as NSNumber, forKey: "progress")
+            fetchedQuiz.setValue(NSNumber(value: round(totalProgress * 100)), forKey: "progress")
             CoreDataStackManager.sharedInstance().saveContext()
             
-            totalPages = questions.count
         } else {
             totalPages = 0
         }
-        progressView?.progress = Float(currentPage + 1) / Float(totalPages)
+        progressView?.progress = totalProgress
     }
     
     // MARK: - TableView delegate

@@ -11,6 +11,7 @@ import UIKit
 class QuizCell: UITableViewCell {
 
     @IBOutlet var quizTitle: UILabel!
+    @IBOutlet var progressLabel: UILabel!
     @IBOutlet var quizPhoto: UIImageView!
 
     override func awakeFromNib() {

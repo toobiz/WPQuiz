@@ -21,11 +21,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func fetchAllQuizzes() -> [Quiz] {
         
-        // Create the Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
-        //        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "gameTitle", ascending: true)]
         
-        // Execute the Fetch Request
         do {
             return try sharedContext.fetch(fetchRequest) as! [Quiz]
         } catch  let error as NSError {
@@ -39,6 +36,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         self.quizzes = fetchAllQuizzes()
 
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
@@ -68,6 +66,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
         cell.selectionStyle = .none
+        cell.progressLabel.isHidden = true
         
         let quiz = quizzes[indexPath.row]
         var titleString = String()
@@ -77,12 +76,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             titleString = quiz.title
             
             if Int(quiz.progress!) > 0 {
+                cell.progressLabel.isHidden = false
                 print("\(quiz.title) ma progress")
-                progressString = String(describing: quiz.progress!)
-                cell.quizTitle.text = progressString
-            } else {
-                cell.quizTitle.text = titleString
+                progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
+                cell.progressLabel.text = progressString
             }
+            cell.quizTitle.text = titleString
         }
         
         
