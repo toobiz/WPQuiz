@@ -12,6 +12,8 @@
 		270413011E71A3AF003389C7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270413001E71A3AF003389C7 /* ResultViewController.swift */; };
 		270413031E71BE6E003389C7 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270413021E71BE6E003389C7 /* CoreDataStackManager.swift */; };
 		270413091E71C227003389C7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 270413071E71C227003389C7 /* DataModel.xcdatamodeld */; };
+		275817D51E7311C000D7CF26 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275817D41E7311BF00D7CF26 /* ResultView.xib */; };
+		275817D71E7311ED00D7CF26 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275817D61E7311ED00D7CF26 /* ResultView.swift */; };
 		2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794033E1E6DACF100FF6416 /* AppDelegate.swift */; };
 		279403411E6DACF100FF6416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403401E6DACF100FF6416 /* MainViewController.swift */; };
 		279403441E6DACF100FF6416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403421E6DACF100FF6416 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		270413001E71A3AF003389C7 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		270413021E71BE6E003389C7 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		270413081E71C227003389C7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		275817D41E7311BF00D7CF26 /* ResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
+		275817D61E7311ED00D7CF26 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		2794033B1E6DACF100FF6416 /* WPQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2794033E1E6DACF100FF6416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279403401E6DACF100FF6416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				270413001E71A3AF003389C7 /* ResultViewController.swift */,
 				279403561E6EEB2F00FF6416 /* QuizCell.swift */,
 				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
+				275817D41E7311BF00D7CF26 /* ResultView.xib */,
+				275817D61E7311ED00D7CF26 /* ResultView.swift */,
 				270412FC1E716A8E003389C7 /* AnswerCell.swift */,
 				270412FD1E716A8E003389C7 /* AnswerCell.xib */,
 			);
@@ -190,6 +196,7 @@
 				279403491E6DACF100FF6416 /* LaunchScreen.storyboard in Resources */,
 				279403461E6DACF100FF6416 /* Assets.xcassets in Resources */,
 				270412FF1E716A8E003389C7 /* AnswerCell.xib in Resources */,
+				275817D51E7311C000D7CF26 /* ResultView.xib in Resources */,
 				279403591E6EEB2F00FF6416 /* QuizCell.xib in Resources */,
 				279403441E6DACF100FF6416 /* Main.storyboard in Resources */,
 			);
@@ -207,6 +214,7 @@
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
 				279403621E7014A500FF6416 /* Answer.swift in Sources */,
 				2794035E1E6F403000FF6416 /* Quiz.swift in Sources */,
+				275817D71E7311ED00D7CF26 /* ResultView.swift in Sources */,
 				270413031E71BE6E003389C7 /* CoreDataStackManager.swift in Sources */,
 				2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */,
 				2794035B1E6EFD9A00FF6416 /* QuizViewController.swift in Sources */,

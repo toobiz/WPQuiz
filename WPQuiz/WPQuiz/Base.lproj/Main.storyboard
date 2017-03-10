@@ -218,6 +218,8 @@
                             <constraint firstItem="B6U-A7-JBX" firstAttribute="centerX" secondItem="1Tj-Sl-a8s" secondAttribute="centerX" id="wku-Jl-4yj"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="resultScoreLabel" destination="Kvt-YA-Jue" id="D7V-PU-O2e"/>
                         <outlet property="resultTitleLabel" destination="UVo-nQ-GhZ" id="q9B-Za-t6c"/>
