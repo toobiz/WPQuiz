@@ -76,6 +76,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         quizView.quiz = quiz
         let navController = UINavigationController(rootViewController: quizView)
         self.present(navController, animated: true, completion: nil)
+        print("Wybrano quiz no. \(quiz.id)")
     }
 
 }

@@ -101,13 +101,14 @@ class API: NSObject {
 //                    CoreDataStackManager.sharedInstance().saveContext()
 //                    self.quizzes.append(quizToAdd)
 //                } else {
-                    for element in elements {
-                        if Int(element.id) != Int(idToAdd)  {
+//                    for element in elements {
+//                        if Int(element.id) != Int(idToAdd)  {
                             print("Dodajemy quiz to bazy")
                             let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
+                            CoreDataStackManager.sharedInstance().saveContext()
                             self.quizzes.append(quizToAdd)
-                        }
-                    }
+//                        }
+//                    }
 //            }
             
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -20,6 +21,27 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var progressView: UIProgressView!
+    
+    lazy var sharedContext: NSManagedObjectContext =  {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
+    func fetchQuiz() -> [Quiz] {
+        
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
+        let predicate = NSPredicate(format: "%K == %@", "id", quiz.id)
+        fetchRequest.predicate = predicate
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        
+        // Execute the Fetch Request
+        do {
+            return try sharedContext.fetch(fetchRequest) as! [Quiz]
+        } catch  let error as NSError {
+            print("Error in fetchAllQuizzes(): \(error)")
+            return [Quiz]()
+        }
+    }
     
     @IBAction func endButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -70,6 +92,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateProgress() {
         var totalPages = Int()
         if questions.count > 0 {
+            
+            let fetchResult = fetchQuiz()
+            let fetchedQuiz = fetchResult[0]
+            fetchedQuiz.setValue(currentPage + 1 as NSNumber, forKey: "progress")
+            CoreDataStackManager.sharedInstance().saveContext()
+            
             totalPages = questions.count
         } else {
             totalPages = 0
