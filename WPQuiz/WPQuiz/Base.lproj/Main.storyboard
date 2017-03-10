@@ -71,20 +71,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEX-Da-6TP">
-                                <rect key="frame" x="133" y="610" width="108" height="37"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="108" id="EEe-Dt-4IN"/>
-                                    <constraint firstAttribute="height" constant="37" id="u6c-ur-ZLx"/>
-                                </constraints>
-                                <state key="normal" title="Dalej"/>
-                                <connections>
-                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="79O-9j-oCW"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Eg-KW-D77">
                                 <rect key="frame" x="16" y="187" width="343" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="141" id="X77-nl-0yr"/>
+                                </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxI-Qa-jsP">
                                 <rect key="frame" x="16" y="336" width="343" height="227"/>
@@ -100,26 +91,17 @@
                             <constraint firstItem="3Eg-KW-D77" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="5cf-rx-rpy"/>
                             <constraint firstItem="jxI-Qa-jsP" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="GVx-qh-s1t"/>
                             <constraint firstItem="2eh-Kk-evi" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" constant="-14" id="NK6-Wm-gNo"/>
-                            <constraint firstItem="NEX-Da-6TP" firstAttribute="centerX" secondItem="FQU-Pi-gF2" secondAttribute="centerX" id="OmR-Sn-MxD"/>
                             <constraint firstItem="3Eg-KW-D77" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="VDI-fw-3Xn"/>
                             <constraint firstItem="2eh-Kk-evi" firstAttribute="top" secondItem="Djc-lR-1Kq" secondAttribute="bottom" constant="46" id="XaD-g3-PcP"/>
                             <constraint firstItem="zBl-Wd-xpG" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" id="ZYx-9d-XHw"/>
                             <constraint firstItem="jxI-Qa-jsP" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="djS-R3-1et"/>
                             <constraint firstItem="3Eg-KW-D77" firstAttribute="top" secondItem="2eh-Kk-evi" secondAttribute="bottom" constant="8" id="e9p-3q-4lm"/>
-                            <constraint firstItem="2CN-uH-Yn6" firstAttribute="top" secondItem="NEX-Da-6TP" secondAttribute="bottom" constant="20" id="fa8-2U-XiC"/>
                             <constraint firstItem="jxI-Qa-jsP" firstAttribute="top" secondItem="3Eg-KW-D77" secondAttribute="bottom" constant="8" id="hof-WG-mkw"/>
-                            <constraint firstItem="NEX-Da-6TP" firstAttribute="top" secondItem="zBl-Wd-xpG" secondAttribute="bottom" constant="23" id="nRh-nR-X49"/>
                             <constraint firstItem="2eh-Kk-evi" firstAttribute="leading" secondItem="FQU-Pi-gF2" secondAttribute="leadingMargin" constant="14" id="p1W-LZ-oAa"/>
                             <constraint firstItem="zBl-Wd-xpG" firstAttribute="trailing" secondItem="FQU-Pi-gF2" secondAttribute="trailingMargin" id="v2H-6x-qZ1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nUm-rR-Go7">
-                        <barButtonItem key="rightBarButtonItem" title="Zakończ" id="SM7-De-chb">
-                            <connections>
-                                <action selector="endButton:" destination="HkV-xq-skl" id="nDA-82-sn5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="nUm-rR-Go7"/>
                     <connections>
                         <outlet property="imageView" destination="3Eg-KW-D77" id="QFf-JE-LjV"/>
                         <outlet property="progressView" destination="zBl-Wd-xpG" id="1U8-pT-nZD"/>
@@ -206,7 +188,6 @@
                                 </constraints>
                                 <state key="normal" title="Rozwiąż jeszcze raz"/>
                                 <connections>
-                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="e67-mX-rcQ"/>
                                     <action selector="tryAgain:" destination="RUC-yv-WHQ" eventType="touchUpInside" id="yRO-uf-HmS"/>
                                 </connections>
                             </button>
@@ -220,7 +201,6 @@
                                 <state key="normal" title="Przejdź do listy quizów"/>
                                 <connections>
                                     <action selector="goToList:" destination="RUC-yv-WHQ" eventType="touchUpInside" id="6GX-wy-hG9"/>
-                                    <action selector="showNextQuestion:" destination="HkV-xq-skl" eventType="touchUpInside" id="08c-xX-24Q"/>
                                 </connections>
                             </button>
                         </subviews>
