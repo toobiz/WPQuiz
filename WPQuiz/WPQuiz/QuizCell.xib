@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="239"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wIu-UN-hKi">
@@ -33,12 +33,12 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-og-sw2">
                         <rect key="frame" x="0.0" y="141" width="320" height="27"/>
-                        <color key="backgroundColor" red="0.72156862745098038" green="0.72336632013320923" blue="0.72156862745098038" alpha="0.84867869127516782" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.84662177370948377" green="0.89098961945293709" blue="0.076319902961184377" alpha="0.84867869127516782" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="b6i-ua-sog"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
