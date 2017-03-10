@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -14,11 +15,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var tableView: UITableView!
     
+    lazy var sharedContext: NSManagedObjectContext =  {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
+    func fetchAllQuizzes() -> [Quiz] {
+        
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
+        //        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "gameTitle", ascending: true)]
+        
+        // Execute the Fetch Request
+        do {
+            return try sharedContext.fetch(fetchRequest) as! [Quiz]
+        } catch  let error as NSError {
+            print("Error in fetchAllQuizzes(): \(error)")
+            return [Quiz]()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        self.quizzes = fetchAllQuizzes()
 
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
             self.quizzes = quizzes
@@ -26,6 +47,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        tableView.reloadData()
     }
 
     // MARK: - TableView delegate
@@ -45,11 +71,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let quiz = quizzes[indexPath.row]
         var titleString = String()
+        var progressString = String()
         
-            if quizzes.count > 0 {
+        if quizzes.count > 0 {
             titleString = quiz.title
+            
+            if Int(quiz.progress!) > 0 {
+                print("\(quiz.title) ma progress")
+                progressString = String(describing: quiz.progress!)
+                cell.quizTitle.text = progressString
+            } else {
+                cell.quizTitle.text = titleString
+            }
         }
-        cell.quizTitle.text = titleString
+        
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
             

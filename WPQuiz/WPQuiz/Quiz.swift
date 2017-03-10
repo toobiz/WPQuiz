@@ -23,7 +23,7 @@ class Quiz: NSManagedObject {
     @NSManaged var id: NSNumber
     @NSManaged var title: String
     @NSManaged var url: String
-    @NSManaged var progress: NSNumber
+    @NSManaged var progress: NSNumber?
     @NSManaged var score: NSNumber
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
@@ -47,7 +47,7 @@ class Quiz: NSManagedObject {
         }
         
         if let quiz_progress = dictionary["progress"] {
-            progress = quiz_progress as! NSNumber
+            progress = quiz_progress as? NSNumber
         }
         
         if let quiz_score = dictionary["score"] {
