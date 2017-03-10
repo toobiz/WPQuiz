@@ -54,10 +54,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         progressView?.progress = 0
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        
         API.sharedInstance().downloadQuiz(quiz: quiz) { (success, questions, error) in
             if success == true {
                 self.questions = questions
@@ -69,6 +66,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 });
             }
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+
     }
     
     @IBAction func showNextQuestion(_ sender: Any) {
@@ -86,6 +88,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.present(resultView, animated: true, completion: nil)
             print("Koniec")
             print("Twój wynik:  \(finalScore)")
+            
+            let fetchResult = fetchQuiz()
+            let fetchedQuiz = fetchResult[0]
+            fetchedQuiz.setValue(NSNumber(value: round(finalScore * 100)), forKey: "score")
+            CoreDataStackManager.sharedInstance().saveContext()
         }
     }
     

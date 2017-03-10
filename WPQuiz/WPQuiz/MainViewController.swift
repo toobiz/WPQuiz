@@ -81,6 +81,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
                 cell.progressLabel.text = progressString
             }
+            if Int(quiz.score) > 0 {
+                progressString = "Ostatni wynik: " + String(describing: quiz.score) + "%"
+                cell.progressLabel.text = progressString
+            }
+            
             cell.quizTitle.text = titleString
         }
         
