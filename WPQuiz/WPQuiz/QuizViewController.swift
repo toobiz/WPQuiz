@@ -17,7 +17,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var quizId = NSNumber()
     var quiz : Quiz!
     var totalScore = Float()
-    var finalScore = Float()
+    var fetchedScore = Int()
     var totalProgress = Float()
     var quizView = QuizView()
     var resultView = ResultView()
@@ -45,6 +45,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 //                    self.totalScore = Float(self.quiz.score)
                     self.currentPage = Int(quiz.currentPage)
+                    self.fetchedScore = Int(quiz.score)
 //                    self.currentPage = self.fetchedPage
 //                    self.saveProgress()
 //                    self.currentPage = 0
@@ -74,10 +75,13 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func saveScore() {
         
-        let fetchResult = fetchQuiz()
-        let fetchedQuiz = fetchResult[0]
-        fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
-        CoreDataStackManager.sharedInstance().saveContext()
+        if fetchedScore == 0 {
+            let fetchResult = fetchQuiz()
+            let fetchedQuiz = fetchResult[0]
+            fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
+            CoreDataStackManager.sharedInstance().saveContext()
+        }
+
     }
     
     func saveProgress() {
