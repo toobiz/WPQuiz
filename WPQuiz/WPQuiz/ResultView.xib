@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wynik:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-Xe-X9j">
-                    <rect key="frame" x="8" y="28" width="359" height="56"/>
+                    <rect key="frame" x="0.0" y="99" width="375" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="oiO-yU-fj5"/>
                     </constraints>
@@ -26,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcd-XL-u4R">
-                    <rect key="frame" x="8" y="124" width="359" height="124"/>
+                    <rect key="frame" x="0.0" y="195" width="375" height="124"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="124" id="C3Y-HN-9yC"/>
                     </constraints>
@@ -35,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHF-UN-pGX">
-                    <rect key="frame" x="96" y="339" width="182" height="37"/>
+                    <rect key="frame" x="97" y="410" width="182" height="37"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="182" id="Zp5-gQ-bph"/>
@@ -44,7 +44,7 @@
                     <state key="normal" title="Rozwiąż jeszcze raz"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jio-go-oJp">
-                    <rect key="frame" x="96" y="284" width="182" height="37"/>
+                    <rect key="frame" x="97" y="355" width="182" height="37"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="Jck-dE-mRw"/>
@@ -56,16 +56,22 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EHF-UN-pGX" firstAttribute="centerX" secondItem="eSW-x1-91X" secondAttribute="centerX" id="1Aa-1H-297"/>
-                <constraint firstItem="IV4-Xe-X9j" firstAttribute="trailing" secondItem="eSW-x1-91X" secondAttribute="trailingMargin" id="2EZ-nt-Qfo"/>
-                <constraint firstItem="IV4-Xe-X9j" firstAttribute="top" secondItem="eSW-x1-91X" secondAttribute="top" constant="28" id="4v3-vj-dHk"/>
+                <constraint firstItem="IV4-Xe-X9j" firstAttribute="trailing" secondItem="eSW-x1-91X" secondAttribute="trailingMargin" constant="8" id="2EZ-nt-Qfo"/>
+                <constraint firstItem="IV4-Xe-X9j" firstAttribute="top" secondItem="eSW-x1-91X" secondAttribute="top" constant="99" id="4v3-vj-dHk"/>
                 <constraint firstItem="Jio-go-oJp" firstAttribute="top" secondItem="fcd-XL-u4R" secondAttribute="bottom" constant="36" id="Dof-OY-Fp7"/>
-                <constraint firstItem="fcd-XL-u4R" firstAttribute="trailing" secondItem="eSW-x1-91X" secondAttribute="trailingMargin" id="GBD-5g-5NC"/>
+                <constraint firstItem="fcd-XL-u4R" firstAttribute="trailing" secondItem="eSW-x1-91X" secondAttribute="trailingMargin" constant="8" id="GBD-5g-5NC"/>
                 <constraint firstItem="EHF-UN-pGX" firstAttribute="top" secondItem="Jio-go-oJp" secondAttribute="bottom" constant="18" id="Pgk-2Y-KfC"/>
-                <constraint firstItem="fcd-XL-u4R" firstAttribute="leading" secondItem="eSW-x1-91X" secondAttribute="leadingMargin" id="YjH-bg-Ltg"/>
+                <constraint firstItem="fcd-XL-u4R" firstAttribute="leading" secondItem="eSW-x1-91X" secondAttribute="leadingMargin" constant="-8" id="YjH-bg-Ltg"/>
                 <constraint firstItem="Jio-go-oJp" firstAttribute="centerX" secondItem="eSW-x1-91X" secondAttribute="centerX" id="aE8-az-KmQ"/>
                 <constraint firstItem="fcd-XL-u4R" firstAttribute="top" secondItem="IV4-Xe-X9j" secondAttribute="bottom" constant="40" id="cLj-AM-YVn"/>
-                <constraint firstItem="IV4-Xe-X9j" firstAttribute="leading" secondItem="eSW-x1-91X" secondAttribute="leadingMargin" id="hpC-5e-e3e"/>
+                <constraint firstItem="IV4-Xe-X9j" firstAttribute="leading" secondItem="eSW-x1-91X" secondAttribute="leadingMargin" constant="-8" id="hpC-5e-e3e"/>
             </constraints>
+            <connections>
+                <outlet property="goToListButton" destination="Jio-go-oJp" id="kjn-4Y-xJY"/>
+                <outlet property="resultScoreLabel" destination="fcd-XL-u4R" id="NId-C9-Vd3"/>
+                <outlet property="resultTitleLabel" destination="IV4-Xe-X9j" id="LDE-cM-faq"/>
+                <outlet property="tryAgainButton" destination="EHF-UN-pGX" id="XXS-7Z-Zjq"/>
+            </connections>
         </view>
     </objects>
 </document>

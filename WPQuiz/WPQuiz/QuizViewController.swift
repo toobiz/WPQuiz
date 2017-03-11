@@ -32,8 +32,10 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         quizView.tableView.delegate = self
         quizView.tableView.dataSource = self
-        
         quizView.progressView?.progress = 0
+        
+        resultView.goToListButton.addTarget(self, action: #selector(goToList), for: .touchUpInside)
+
         
         let fetchResult = fetchQuiz()
         let quiz = fetchResult[0]
@@ -55,11 +57,16 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func goToList() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func updateView() {
         
         if currentPage >= questions.count {
             contentView.addSubview(resultView)
             saveScore()
+            reloadResultData()
         } else {
             contentView.addSubview(quizView)
             reloadQuizData()
@@ -71,6 +78,16 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         quizView.questionLabel.text = questions[currentPage].text
         quizView.tableView.reloadData()
         quizView.progressView?.progress = setProgress()
+    }
+    
+    func reloadResultData() {
+        var scoreString = String()
+        if totalScore == 0 {
+            scoreString = String(describing: fetchedScore) + "%"
+        } else {
+            scoreString = String(describing: Int(round(setScore()*100))) + "%"
+        }
+        resultView.resultScoreLabel.text = scoreString
     }
     
     func saveScore() {

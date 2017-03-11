@@ -10,8 +10,9 @@ import UIKit
 
 class ResultView: UIView {
 
-    override func layoutSubviews() {
-        
-    }
-
+    @IBOutlet var resultTitleLabel: UILabel!
+    @IBOutlet var resultScoreLabel: UILabel!
+    @IBOutlet var goToListButton: UIButton!
+    @IBOutlet var tryAgainButton: UIButton!
+    
 }
