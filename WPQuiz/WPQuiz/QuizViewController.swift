@@ -44,8 +44,10 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             if success == true {
                 self.questions = questions
                 DispatchQueue.main.async(execute: {
-
-//                    self.totalScore = Float(self.quiz.score)
+                    
+//                    if quiz.score != 0 {
+//                        self.totalScore = Float(quiz.score)
+//                    }
                     self.currentPage = Int(quiz.currentPage)
                     self.fetchedScore = Int(quiz.score)
 //                    self.currentPage = self.fetchedPage
@@ -64,15 +66,18 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tryAgain() {
         currentPage = 0
 //        totalScore = 0
-        updateView()
+//        updateView()
+//        saveProgress()
+        contentView.addSubview(quizView)
+        reloadQuizData()
     }
     
     func updateView() {
         
         if currentPage >= questions.count {
             contentView.addSubview(resultView)
-            saveScore()
-            saveProgress()
+//            saveScore()
+//            saveProgress()
             reloadResultData()
         } else {
             contentView.addSubview(quizView)
@@ -99,12 +104,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func saveScore() {
         
-        if Float(fetchedScore) != totalScore || fetchedScore == 0 {
+//        if Float(fetchedScore) != totalScore || fetchedScore == 0 {
             let fetchResult = fetchQuiz()
             let fetchedQuiz = fetchResult[0]
             fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
             CoreDataStackManager.sharedInstance().saveContext()
-        }
+//        }
 
     }
     
@@ -174,9 +179,20 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         if currentPage < questions.count {
             currentPage = currentPage + 1
         }
-        
-        updateView()
+        saveScore()
         saveProgress()
+//        updateView()
+        
+        if currentPage >= questions.count {
+            contentView.addSubview(resultView)
+            saveScore()
+            //            saveProgress()
+            reloadResultData()
+        } else {
+            contentView.addSubview(quizView)
+            reloadQuizData()
+        }
+//        saveProgress()
     }
     
     // MARK: - Core Data
