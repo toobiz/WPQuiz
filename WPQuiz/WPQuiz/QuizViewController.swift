@@ -44,7 +44,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 DispatchQueue.main.async(execute: {
 
 //                    self.totalScore = Float(self.quiz.score)
-                    self.currentPage = Int(Float(quiz.progress!)/Float(self.questions.count))
+                    self.currentPage = quiz.progress as! Int
 //                    self.currentPage = self.fetchedPage
 //                    self.saveProgress()
 //                    self.currentPage = 0
@@ -84,9 +84,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let fetchResult = fetchQuiz()
         let fetchedQuiz = fetchResult[0]
-        fetchedQuiz.setValue(NSNumber(value: round(setProgress()*100)), forKey: "progress")
+        fetchedQuiz.setValue(currentPage, forKey: "progress")
         CoreDataStackManager.sharedInstance().saveContext()
-        print(totalProgress)
+        print("Total progress is: \(totalProgress)")
     }
     
     func setProgress() -> Float {
@@ -142,8 +142,8 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             currentPage = currentPage + 1
         }
         
-        saveProgress()
         updateView()
+        saveProgress()
     }
     
     // MARK: - Core Data
