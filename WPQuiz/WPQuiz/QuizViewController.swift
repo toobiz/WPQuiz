@@ -35,7 +35,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         quizView.progressView?.progress = 0
         
         resultView.goToListButton.addTarget(self, action: #selector(goToList), for: .touchUpInside)
-
+        resultView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         
         let fetchResult = fetchQuiz()
         let quiz = fetchResult[0]
@@ -58,7 +58,13 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func goToList() {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func tryAgain() {
+        currentPage = 0
+//        totalScore = 0
+        updateView()
     }
     
     func updateView() {
@@ -66,6 +72,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         if currentPage >= questions.count {
             contentView.addSubview(resultView)
             saveScore()
+            saveProgress()
             reloadResultData()
         } else {
             contentView.addSubview(quizView)
@@ -92,7 +99,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func saveScore() {
         
-        if fetchedScore == 0 {
+        if Float(fetchedScore) != totalScore || fetchedScore == 0 {
             let fetchResult = fetchQuiz()
             let fetchedQuiz = fetchResult[0]
             fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
@@ -158,9 +165,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if isCorrect == true {
             totalScore += 1
+            print("Poprawna odpowiedź")
+        } else {
+            print("Niepoprawna odpowiedź")
         }
 
-//        print(totalScore)
+        print("Wynik końcowy: \(totalScore)")
         if currentPage < questions.count {
             currentPage = currentPage + 1
         }
