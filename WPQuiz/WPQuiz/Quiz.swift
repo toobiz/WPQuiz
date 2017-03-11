@@ -12,19 +12,13 @@ import CoreData
 @objc (Quiz)
 class Quiz: NSManagedObject {
     
-//    struct Keys {
-//        static let id = "id"
-//        static let title = "title"
-//        static let url = "url"
-//        static let progress = "progress"
-//        static let score = "score"
-//    }
-    
     @NSManaged var id: NSNumber
     @NSManaged var title: String
     @NSManaged var url: String
     @NSManaged var progress: NSNumber?
     @NSManaged var score: NSNumber
+    @NSManaged var questionsCount: NSNumber
+    @NSManaged var currentPage: NSNumber
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
@@ -52,6 +46,14 @@ class Quiz: NSManagedObject {
         
         if let quiz_score = dictionary["score"] {
             score = quiz_score as! NSNumber
+        }
+        
+        if let questions_count = dictionary["questionsCount"] {
+            progress = questions_count as? NSNumber
+        }
+        
+        if let current_page = dictionary["currentPage"] {
+            score = current_page as! NSNumber
         }
     }
     

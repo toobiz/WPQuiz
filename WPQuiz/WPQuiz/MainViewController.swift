@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if quizzes.count > 0 {
             titleString = quiz.title
             
-            if Int(quiz.progress!) > 0 {
+            if Float(quiz.progress!) > 0 {
                 cell.progressLabel.isHidden = false
                 print("\(quiz.title) ma progress")
                 progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
