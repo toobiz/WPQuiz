@@ -38,6 +38,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         
         self.quizzes = fetchAllQuizzes()
+        quizzes.sort(by: {Int($1.id) < Int($0.id) })
 
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
             self.quizzes = quizzes
