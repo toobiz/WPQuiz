@@ -105,7 +105,7 @@ class API: NSObject {
                     let quizDict: [String : AnyObject] = [
                         "id" : idToAdd as AnyObject,
                         "title" : titleToAdd as AnyObject,
-                        "url" : urlToAdd as AnyObject
+                        "urlString" : urlToAdd as AnyObject
                     ]
                     
                     let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
@@ -187,7 +187,7 @@ class API: NSObject {
                 }
                 
                 if let image = item["image"] as? [String: Any] {
-                    questionImageUrlToAdd = image["urlString"] as! String
+                            questionImageUrlToAdd = image["url"] as! String
                 }
                 
                 let questionDict: [String : AnyObject] = [
@@ -206,4 +206,25 @@ class API: NSObject {
         }
         task.resume()
     }
+    
+    func downloadImage(urlString: String, completionHandler: @escaping (_ success: Bool, _ image: UIImage, _ errorString: String?) -> Void) {
+        
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            let image = UIImage(data: data!)
+            
+            let hasAlpha = true
+            let scale: CGFloat = 3.5 // Use scale factor of main screen
+            let sizeChange = CGSize(width: 108, height: 192)
+
+            UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+            image?.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+            
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            completionHandler(true, scaledImage!, nil)
+        }
+        task.resume()
+    }
+    
 }

@@ -37,7 +37,7 @@ class Quiz: NSManagedObject {
             title = quiz_title as! String
         }
         
-        if let quiz_url = dictionary["url"] {
+        if let quiz_url = dictionary["urlString"] {
             urlString = quiz_url as? String
         }
         

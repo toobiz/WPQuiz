@@ -47,8 +47,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tableView.reloadData()
     }
 
@@ -65,6 +65,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
+        
         cell.selectionStyle = .none
         cell.progressLabel.isHidden = true
         
@@ -100,31 +101,42 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.quizPhoto.image = quiz.image!
             print("Image retrieved from cache")
         } else {
-            
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
-                
-                let imageString = quiz.urlString!
-                let imageURL = URL(string: imageString)
-                
-                    if let data = try? Data(contentsOf: imageURL!) {
-                        
-                        DispatchQueue.main.async(execute: {
-                            cell.quizPhoto.image = UIImage(data: data)
-                            quiz.image = cell.quizPhoto.image
-                        });
-                        
-                    } else {
-                        cell.quizPhoto.image = nil
-                    }
+        
+            API.sharedInstance().downloadImage(urlString: quiz.urlString!, completionHandler: { (success, image, error) in
+                if success == true {
+                    quiz.image = image
+                    DispatchQueue.main.async(execute: {
+                        cell.quizPhoto.image = image
+                    });
+                }
             })
+        
+//            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
+//                
+//                let imageString = quiz.urlString!
+//                let imageURL = URL(string: imageString)
+//                
+//
+//                    if let data = try? Data(contentsOf: imageURL!) {
+//                        
+//                        DispatchQueue.main.async(execute: {
+//                            cell.quizPhoto.image = UIImage(data: data)
+//                            quiz.image = cell.quizPhoto.image
+//
+//                        });
+//                        
+//                    } else {
+//                        cell.quizPhoto.image = nil
+//                    }
+//            })
         }
         
 //        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
 //            
 //            cell.quizPhoto.image = nil
 //            
-//            let imageString = quiz.url
-//            let imageURL = URL(string: imageString)
+//            let imageString = quiz.urlString
+//            let imageURL = URL(string: imageString!)
 //            if let data = try? Data(contentsOf: imageURL!) {
 //                
 //                DispatchQueue.main.async(execute: {
@@ -135,7 +147,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 ////                show placeholder
 //            }
 //        })
-        
         return cell
     }
     
