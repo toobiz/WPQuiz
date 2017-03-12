@@ -91,23 +91,50 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.quizTitle.text = titleString
         }
         
+        cell.quizPhoto.image = nil
         
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
-            
+        if quiz.urlString == nil || quiz.urlString == "" {
             cell.quizPhoto.image = nil
+            print("Image not available")
+        } else if quiz.image != nil {
+            cell.quizPhoto.image = quiz.image!
+            print("Image retrieved from cache")
+        } else {
             
-            let imageString = quiz.url
-            let imageURL = URL(string: imageString)
-            if let data = try? Data(contentsOf: imageURL!) {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
                 
-                DispatchQueue.main.async(execute: {
-                    cell.quizPhoto.image = UIImage(data: data)
-                });
+                let imageString = quiz.urlString!
+                let imageURL = URL(string: imageString)
                 
-            } else {
-//                show placeholder
-            }
-        })
+                    if let data = try? Data(contentsOf: imageURL!) {
+                        
+                        DispatchQueue.main.async(execute: {
+                            cell.quizPhoto.image = UIImage(data: data)
+                            quiz.image = cell.quizPhoto.image
+                        });
+                        
+                    } else {
+                        cell.quizPhoto.image = nil
+                    }
+            })
+        }
+        
+//        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
+//            
+//            cell.quizPhoto.image = nil
+//            
+//            let imageString = quiz.url
+//            let imageURL = URL(string: imageString)
+//            if let data = try? Data(contentsOf: imageURL!) {
+//                
+//                DispatchQueue.main.async(execute: {
+//                    cell.quizPhoto.image = UIImage(data: data)
+//                });
+//                
+//            } else {
+////                show placeholder
+//            }
+//        })
         
         return cell
     }

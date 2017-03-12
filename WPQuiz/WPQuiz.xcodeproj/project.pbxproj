@@ -16,6 +16,7 @@
 		275817D71E7311ED00D7CF26 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275817D61E7311ED00D7CF26 /* ResultView.swift */; };
 		275ABCB91E731445001B3C5A /* QuizView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 275ABCB81E731445001B3C5A /* QuizView.xib */; };
 		275ABCBD1E7318AC001B3C5A /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275ABCBC1E7318AC001B3C5A /* QuizView.swift */; };
+		275ABCBF1E75B95C001B3C5A /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275ABCBE1E75B95C001B3C5A /* ImageCache.swift */; };
 		2794033F1E6DACF100FF6416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2794033E1E6DACF100FF6416 /* AppDelegate.swift */; };
 		279403411E6DACF100FF6416 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279403401E6DACF100FF6416 /* MainViewController.swift */; };
 		279403441E6DACF100FF6416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279403421E6DACF100FF6416 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		275817D61E7311ED00D7CF26 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		275ABCB81E731445001B3C5A /* QuizView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizView.xib; sourceTree = "<group>"; };
 		275ABCBC1E7318AC001B3C5A /* QuizView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		275ABCBE1E75B95C001B3C5A /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2794033B1E6DACF100FF6416 /* WPQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2794033E1E6DACF100FF6416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279403401E6DACF100FF6416 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				279403521E6DB53E00FF6416 /* API.swift */,
 				279403541E6DB6FD00FF6416 /* Constants.swift */,
+				275ABCBE1E75B95C001B3C5A /* ImageCache.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				279403411E6DACF100FF6416 /* MainViewController.swift in Sources */,
 				279403601E70101800FF6416 /* Question.swift in Sources */,
+				275ABCBF1E75B95C001B3C5A /* ImageCache.swift in Sources */,
 				275ABCBD1E7318AC001B3C5A /* QuizView.swift in Sources */,
 				279403531E6DB53E00FF6416 /* API.swift in Sources */,
 				279403621E7014A500FF6416 /* Answer.swift in Sources */,

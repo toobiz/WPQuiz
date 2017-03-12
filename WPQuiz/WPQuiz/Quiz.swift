@@ -8,17 +8,18 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc (Quiz)
 class Quiz: NSManagedObject {
     
     @NSManaged var id: NSNumber
     @NSManaged var title: String
-    @NSManaged var url: String
     @NSManaged var progress: NSNumber?
     @NSManaged var score: NSNumber
     @NSManaged var questionsCount: NSNumber
     @NSManaged var currentPage: NSNumber
+    @NSManaged var urlString: String?
     
     override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
@@ -37,7 +38,7 @@ class Quiz: NSManagedObject {
         }
         
         if let quiz_url = dictionary["url"] {
-            url = quiz_url as! String
+            urlString = quiz_url as? String
         }
         
         if let quiz_progress = dictionary["progress"] {
@@ -57,4 +58,27 @@ class Quiz: NSManagedObject {
         }
     }
     
+    var image: UIImage? {
+        
+        get {
+            var imageString = String()
+            if urlString != nil {
+                imageString = urlString!
+            }
+            let url = URL(fileURLWithPath: imageString)
+            let fileName = url.lastPathComponent
+            return ImageCache.Caches.imageCache.imageWithIdentifier(fileName)
+        }
+        
+        set {
+            if urlString != nil {
+                let imageString = urlString!
+                let url = URL(fileURLWithPath: imageString)
+                let fileName = url.lastPathComponent
+                ImageCache.Caches.imageCache.storeImage(newValue, withIdentifier: fileName)
+            }
+            
+        }
+    }
+
 }

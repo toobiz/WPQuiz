@@ -187,11 +187,7 @@ class API: NSObject {
                 }
                 
                 if let image = item["image"] as? [String: Any] {
-                    
-//                        let url = image["url"] as? String {
-                            questionImageUrlToAdd = image["url"] as! String
-//                            //                            print(text)
-//                    }
+                    questionImageUrlToAdd = image["urlString"] as! String
                 }
                 
                 let questionDict: [String : AnyObject] = [
