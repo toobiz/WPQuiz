@@ -87,6 +87,20 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func reloadQuizData() {
         
+        if (questions[self.currentPage].imageUrl != "") {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
+                self.quizView.imageView.image = nil
+                let imageString = self.questions[self.currentPage].imageUrl
+                let imageURL = URL(string: imageString)
+                if let data = try? Data(contentsOf: imageURL!) {
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.quizView.imageView.image = UIImage(data: data)
+                    });
+                }
+            })
+        }
+        
         quizView.questionLabel.text = questions[currentPage].text
         quizView.tableView.reloadData()
         quizView.progressView?.progress = setProgress()

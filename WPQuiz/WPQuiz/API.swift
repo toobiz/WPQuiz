@@ -112,19 +112,6 @@ class API: NSObject {
                     CoreDataStackManager.sharedInstance().saveContext()
                     self.quizzes.append(quizToAdd)
                 }
-                
-//                if self.quizzes.count == 0 {
-//                    let quizToAdd = Quiz(dictionary: quizDict, context: self.sharedContext)
-//                    CoreDataStackManager.sharedInstance().saveContext()
-//                    self.quizzes.append(quizToAdd)
-//                } else {
-//                    for element in elements {
-//                        if Int(element.id) != Int(idToAdd)  {
-
-//                        }
-//                    }
-//            }
-            
 
             }
             CoreDataStackManager.sharedInstance().saveContext()
@@ -159,6 +146,7 @@ class API: NSObject {
             for item in items {
                 
                 var questionTextToAdd = String()
+                var questionImageUrlToAdd = String()
                 var answersToAdd = [Answer]()
 
                 if let text = item["text"] as? String  {
@@ -198,10 +186,19 @@ class API: NSObject {
                     
                 }
                 
+//                if let image = item["image"] {
+//                    
+//                        let url = image["url"] as? String {
+//                            questionImageUrlToAdd = url
+//                            //                            print(text)
+//                    }
+//                }
+                
                 let questionDict: [String : AnyObject] = [
                     "text" : questionTextToAdd as AnyObject,
                     "quiz" : quiz,
-                    "answers" : answersToAdd as AnyObject
+                    "answers" : answersToAdd as AnyObject,
+                    "imageUrl" : questionImageUrlToAdd as AnyObject
                     ]
                 
                 let questionToAdd = Question(dictionary: questionDict)

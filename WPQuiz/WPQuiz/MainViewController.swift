@@ -94,6 +94,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
             
+            cell.quizPhoto.image = nil
+            
             let imageString = quiz.url
             let imageURL = URL(string: imageString)
             if let data = try? Data(contentsOf: imageURL!) {
