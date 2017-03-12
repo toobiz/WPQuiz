@@ -178,6 +178,9 @@ class API: NSObject {
                             answerTextToAdd = text
 //                            print(text)
                         }
+                        else if let text = answer["text"] as? Int {
+                            answerTextToAdd = String(text)
+                        }
                         
                         if let bool = answer["isCorrect"] as? Bool {
                             boolToAdd = bool
