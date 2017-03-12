@@ -81,8 +81,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
                 cell.progressLabel.text = progressString
             }
-            if Int(quiz.score) > 0 {
-                progressString = "Ostatni wynik: " + String(describing: quiz.score) + "%"
+            if Float(quiz.score) > 0 && Float(quiz.progress!) == 100 {
+                let totalPages = quiz.questionsCount
+                let totalProgress = Float(quiz.score) / Float(totalPages)
+                progressString = "Ostatni wynik: " + String(describing: Int(round(totalProgress * 100))) + "%"
                 cell.progressLabel.text = progressString
             }
             

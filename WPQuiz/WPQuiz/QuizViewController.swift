@@ -45,9 +45,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.questions = questions
                 DispatchQueue.main.async(execute: {
                     
-//                    if quiz.score != 0 {
-//                        self.totalScore = Float(quiz.score)
-//                    }
+                    if quiz.score != 0 {
+                        self.totalScore = Float(quiz.score)
+                    }
                     self.currentPage = Int(quiz.currentPage)
                     self.fetchedScore = Int(quiz.score)
 //                    self.currentPage = self.fetchedPage
@@ -65,7 +65,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tryAgain() {
         currentPage = 0
-//        totalScore = 0
+        totalScore = 0
 //        updateView()
 //        saveProgress()
         contentView.addSubview(quizView)
@@ -107,7 +107,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        if Float(fetchedScore) != totalScore || fetchedScore == 0 {
             let fetchResult = fetchQuiz()
             let fetchedQuiz = fetchResult[0]
-            fetchedQuiz.setValue(NSNumber(value: round(setScore()*100)), forKey: "score")
+            fetchedQuiz.setValue(totalScore, forKey: "score")
             CoreDataStackManager.sharedInstance().saveContext()
 //        }
 
