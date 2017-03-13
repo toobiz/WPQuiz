@@ -75,7 +75,6 @@ class API: NSObject {
             var ids = [NSNumber]()
             
             for quiz in self.quizzes {
-                print(quiz.id)
                 ids.append(quiz.id)
             }
             
@@ -88,9 +87,9 @@ class API: NSObject {
                 }
                 
                 if ids.contains(idToAdd) {
-                    print("Adding quiz to Core Data")
-                } else {
                     print("Already in Core Data")
+                } else {
+                    print("Adding quiz Core Data")
                     
                     var titleToAdd = String()
                     var urlToAdd = String()

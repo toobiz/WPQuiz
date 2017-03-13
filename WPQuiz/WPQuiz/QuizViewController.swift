@@ -12,7 +12,6 @@ import CoreData
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var currentPage = Int()
-    var fetchedPage = Int()
     var questions = [Question]()
     var quizId = NSNumber()
     var quiz : Quiz!
@@ -23,6 +22,28 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var resultView = ResultView()
 
     @IBOutlet var contentView: UIView!
+    
+    // MARK: - Core Data
+    
+    lazy var sharedContext: NSManagedObjectContext =  {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
+    func fetchQuiz() -> [Quiz] {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
+        let predicate = NSPredicate(format: "%K == %@", "id", quizId)
+        fetchRequest.predicate = predicate
+        
+        do {
+            return try sharedContext.fetch(fetchRequest) as! [Quiz]
+        } catch  let error as NSError {
+            print("Error in fetchAllQuizzes(): \(error)")
+            return [Quiz]()
+        }
+    }
+
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +58,13 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         resultView.goToListButton.addTarget(self, action: #selector(goToList), for: .touchUpInside)
         resultView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         
+        downloadQuiz()
+    }
+    
+    // MARK: - Functions
+    
+    func downloadQuiz() {
+        
         let fetchResult = fetchQuiz()
         let quiz = fetchResult[0]
         
@@ -50,9 +78,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                     self.currentPage = Int(quiz.currentPage)
                     self.fetchedScore = Int(quiz.score)
-//                    self.currentPage = self.fetchedPage
-//                    self.saveProgress()
-//                    self.currentPage = 0
                     self.updateView()
                 });
             }
@@ -66,8 +91,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tryAgain() {
         currentPage = 0
         totalScore = 0
-//        updateView()
-//        saveProgress()
         contentView.addSubview(quizView)
         reloadQuizData()
     }
@@ -76,8 +99,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if currentPage >= questions.count {
             contentView.addSubview(resultView)
-//            saveScore()
-//            saveProgress()
             reloadResultData()
         } else {
             contentView.addSubview(quizView)
@@ -86,10 +107,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func reloadQuizData() {
-        
+        self.quizView.imageView.image = nil
+
         if (questions[self.currentPage].imageUrl != "") {
+            
             DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
-                self.quizView.imageView.image = nil
                 let imageString = self.questions[self.currentPage].imageUrl
                 let imageURL = URL(string: imageString)
                 if let data = try? Data(contentsOf: imageURL!) {
@@ -100,7 +122,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             })
         }
-        
         quizView.questionLabel.text = questions[currentPage].text
         quizView.tableView.reloadData()
         quizView.progressView?.progress = setProgress()
@@ -117,18 +138,13 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func saveScore() {
-        
-//        if Float(fetchedScore) != totalScore || fetchedScore == 0 {
-            let fetchResult = fetchQuiz()
-            let fetchedQuiz = fetchResult[0]
-            fetchedQuiz.setValue(totalScore, forKey: "score")
-            CoreDataStackManager.sharedInstance().saveContext()
-//        }
-
+        let fetchResult = fetchQuiz()
+        let fetchedQuiz = fetchResult[0]
+        fetchedQuiz.setValue(totalScore, forKey: "score")
+        CoreDataStackManager.sharedInstance().saveContext()
     }
     
     func saveProgress() {
-        
         let fetchResult = fetchQuiz()
         let fetchedQuiz = fetchResult[0]
         fetchedQuiz.setValue(NSNumber(value: round(setProgress()*100)), forKey: "progress")
@@ -184,49 +200,18 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if isCorrect == true {
             totalScore += 1
-            print("Poprawna odpowiedź")
+            print("Correct answer")
         } else {
-            print("Niepoprawna odpowiedź")
+            print("Incorrect answer")
         }
 
-        print("Wynik końcowy: \(totalScore)")
+        print("Total score: \(totalScore)")
         if currentPage < questions.count {
-            currentPage = currentPage + 1
+            currentPage += 1
         }
         saveScore()
         saveProgress()
-//        updateView()
-        
-        if currentPage >= questions.count {
-            contentView.addSubview(resultView)
-            saveScore()
-            //            saveProgress()
-            reloadResultData()
-        } else {
-            contentView.addSubview(quizView)
-            reloadQuizData()
-        }
-//        saveProgress()
+        updateView()
     }
     
-    // MARK: - Core Data
-    
-    lazy var sharedContext: NSManagedObjectContext =  {
-        return CoreDataStackManager.sharedInstance().managedObjectContext
-    }()
-    
-    func fetchQuiz() -> [Quiz] {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
-        let predicate = NSPredicate(format: "%K == %@", "id", quizId)
-        fetchRequest.predicate = predicate
-        
-        do {
-            return try sharedContext.fetch(fetchRequest) as! [Quiz]
-        } catch  let error as NSError {
-            print("Error in fetchAllQuizzes(): \(error)")
-            return [Quiz]()
-        }
-    }
-
 }

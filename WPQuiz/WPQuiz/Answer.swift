@@ -12,7 +12,6 @@ class Answer {
     
     var _text: String!
     var _isCorrect: Bool!
-//    var _question: Question!
     
     var text: String {
         return _text
@@ -21,10 +20,6 @@ class Answer {
     var isCorrect: Bool {
         return _isCorrect
     }
-    
-//    var question: Question {
-//        return _question
-//    }
     
     // Initialize new Answer
     
@@ -37,10 +32,6 @@ class Answer {
         if let isCorrect = dictionary["isCorrect"] as? Bool {
             self._isCorrect = isCorrect
         }
-        
-//        if let question = dictionary["question"] as? Question {
-//            self._question = question
-//        }
         
     }
     

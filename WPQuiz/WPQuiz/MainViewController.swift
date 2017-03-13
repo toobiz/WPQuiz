@@ -15,6 +15,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var tableView: UITableView!
     
+    // MARK: - Core Data
+    
     lazy var sharedContext: NSManagedObjectContext =  {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }()
@@ -30,6 +32,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return [Quiz]()
         }
     }
+    
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +83,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if Float(quiz.progress!) > 0 {
                 cell.progressLabel.isHidden = false
-                print("\(quiz.title) ma progress")
                 progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
                 cell.progressLabel.text = progressString
             }
@@ -89,7 +92,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 progressString = "Ostatni wynik: " + String(describing: Int(round(totalProgress * 100))) + "%"
                 cell.progressLabel.text = progressString
             }
-            
             cell.quizTitle.text = titleString
         }
         
@@ -121,9 +123,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let quiz = quizzes[indexPath.row]
         let quizView = self.storyboard!.instantiateViewController(withIdentifier: "Quiz") as! QuizViewController
         quizView.quizId = quiz.id
-//        let navController = UINavigationController(rootViewController: quizView)
         navigationController?.pushViewController(quizView, animated: true)
-        print("Wybrano quiz no. \(quiz.id)")
+        print("Quiz no. \(quiz.id)")
     }
 
 }
