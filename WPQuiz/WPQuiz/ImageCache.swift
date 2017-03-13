@@ -51,18 +51,15 @@ class ImageCache {
     
     func imageWithIdentifier(_ identifier: String?) -> UIImage? {
         
-        // If the identifier is nil, or empty, return nil
         if identifier == nil || identifier! == "" {
             return nil
         }
         let path = pathForIdentifier(identifier!)
         
-        // First try the memory cache
         if let image = inMemoryCache.object(forKey: path as AnyObject) as? UIImage {
             return image
         }
         
-        // Next try the hard drive
         if let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
             return UIImage(data: data)
         }

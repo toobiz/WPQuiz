@@ -30,17 +30,16 @@ class API: NSObject {
         return Singleton.sharedInstance
     }
     
+    // MARK: - Core Data
+    
     lazy var sharedContext: NSManagedObjectContext =  {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }()
     
     func fetchAllQuizzes() -> [Quiz] {
         
-        // Create the Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quiz")
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "gameTitle", ascending: true)]
         
-        // Execute the Fetch Request
         do {
             return try sharedContext.fetch(fetchRequest) as! [Quiz]
         } catch  let error as NSError {
@@ -48,6 +47,8 @@ class API: NSObject {
             return [Quiz]()
         }
     }
+    
+    // MARK: - WP API
     
     func downloadListOfQuizzes(completionHandler: @escaping (_ success: Bool, _ quizzes: [Quiz], _ errorString: String?) -> Void) {
         
@@ -87,9 +88,9 @@ class API: NSObject {
                 }
                 
                 if ids.contains(idToAdd) {
-                    print("Nie dodajemy")
+                    print("Adding quiz to Core Data")
                 } else {
-                    print("Dodajemy quiz to bazy")
+                    print("Already in Core Data")
                     
                     var titleToAdd = String()
                     var urlToAdd = String()
@@ -151,11 +152,9 @@ class API: NSObject {
 
                 if let text = item["text"] as? String  {
                     questionTextToAdd = text
-//                    print(text)
                 }
                 
                 if let answers = item["answers"] as? [[String:Any]] {
-                    
                     
                     for answer in answers {
                         
@@ -164,7 +163,6 @@ class API: NSObject {
                         
                         if let text = answer["text"] as? String {
                             answerTextToAdd = text
-//                            print(text)
                         }
                         else if let text = answer["text"] as? Int {
                             answerTextToAdd = String(text)
@@ -172,7 +170,6 @@ class API: NSObject {
                         
                         if let bool = answer["isCorrect"] as? Bool {
                             boolToAdd = bool
-//                            print(bool)
                         }
                         
                         let answerDict: [String : AnyObject] = [
@@ -183,7 +180,6 @@ class API: NSObject {
                         let answerToAdd = Answer(dictionary: answerDict)
                         answersToAdd.append(answerToAdd)
                     }
-                    
                 }
                 
                 if let image = item["image"] as? [String: Any] {
@@ -202,7 +198,6 @@ class API: NSObject {
             }
             
             completionHandler(true, questions, nil)
-            
         }
         task.resume()
     }
