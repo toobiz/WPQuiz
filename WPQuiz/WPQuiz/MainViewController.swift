@@ -46,6 +46,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         API.sharedInstance().downloadListOfQuizzes { (success, quizzes, error) in
             self.quizzes = quizzes
+            self.quizzes.sort(by: {Int($1.id) < Int($0.id) })
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
