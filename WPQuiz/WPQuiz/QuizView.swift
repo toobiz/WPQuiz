@@ -14,10 +14,5 @@ class QuizView: UIView {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var progressView: UIProgressView!
-    
-    override func layoutSubviews() {
-        
-//        progressView.progress = 0
-    }
 
 }
