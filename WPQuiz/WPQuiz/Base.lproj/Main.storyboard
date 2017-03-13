@@ -73,13 +73,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urS-zG-i9y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urS-zG-i9y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="urS-zG-i9y" firstAttribute="centerX" secondItem="e4U-rk-bvd" secondAttribute="centerX" id="9Sk-uV-6i5"/>
+                            <constraint firstItem="urS-zG-i9y" firstAttribute="centerY" secondItem="e4U-rk-bvd" secondAttribute="centerY" id="FVG-RO-FgP"/>
+                            <constraint firstAttribute="trailing" secondItem="urS-zG-i9y" secondAttribute="trailing" id="I7Q-r6-282"/>
+                            <constraint firstItem="urS-zG-i9y" firstAttribute="top" secondItem="e4U-rk-bvd" secondAttribute="top" id="IdD-PC-QnU"/>
+                            <constraint firstItem="urS-zG-i9y" firstAttribute="leading" secondItem="e4U-rk-bvd" secondAttribute="leading" id="QHg-a7-DLT"/>
+                            <constraint firstItem="jhH-uI-kkP" firstAttribute="top" secondItem="urS-zG-i9y" secondAttribute="bottom" id="zs5-Wy-InZ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="urS-zG-i9y" id="k44-tz-w7n"/>

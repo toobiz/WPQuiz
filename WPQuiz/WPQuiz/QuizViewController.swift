@@ -55,6 +55,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         quizView.tableView.dataSource = self
         quizView.progressView?.progress = 0
         
+        quizView.frame = view.bounds
+        resultView.frame = view.bounds
+        
         resultView.goToListButton.addTarget(self, action: #selector(goToList), for: .touchUpInside)
         resultView.tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         
