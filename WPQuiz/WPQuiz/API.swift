@@ -89,7 +89,7 @@ class API: NSObject {
                 if ids.contains(idToAdd) {
                     print("Already in Core Data")
                 } else {
-                    print("Adding quiz Core Data")
+                    print("Adding quiz to Core Data")
                     
                     var titleToAdd = String()
                     var urlToAdd = String()
@@ -209,7 +209,7 @@ class API: NSObject {
             
             let hasAlpha = true
             let scale: CGFloat = 3.5
-            let sizeChange = CGSize(width: 108, height: 192)
+            let sizeChange = CGSize(width: 192, height: 108)
 
             UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
             image?.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
