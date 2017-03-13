@@ -214,7 +214,7 @@ class API: NSObject {
             let image = UIImage(data: data!)
             
             let hasAlpha = true
-            let scale: CGFloat = 3.5 // Use scale factor of main screen
+            let scale: CGFloat = 3.5
             let sizeChange = CGSize(width: 108, height: 192)
 
             UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)

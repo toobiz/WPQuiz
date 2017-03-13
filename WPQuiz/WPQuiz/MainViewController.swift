@@ -111,43 +111,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     });
                 }
             })
-        
-//            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
-//                
-//                let imageString = quiz.urlString!
-//                let imageURL = URL(string: imageString)
-//                
-//
-//                    if let data = try? Data(contentsOf: imageURL!) {
-//                        
-//                        DispatchQueue.main.async(execute: {
-//                            cell.quizPhoto.image = UIImage(data: data)
-//                            quiz.image = cell.quizPhoto.image
-//
-//                        });
-//                        
-//                    } else {
-//                        cell.quizPhoto.image = nil
-//                    }
-//            })
         }
-        
-//        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: { () -> Void in
-//            
-//            cell.quizPhoto.image = nil
-//            
-//            let imageString = quiz.urlString
-//            let imageURL = URL(string: imageString!)
-//            if let data = try? Data(contentsOf: imageURL!) {
-//                
-//                DispatchQueue.main.async(execute: {
-//                    cell.quizPhoto.image = UIImage(data: data)
-//                });
-//                
-//            } else {
-////                show placeholder
-//            }
-//        })
+
         return cell
     }
     
