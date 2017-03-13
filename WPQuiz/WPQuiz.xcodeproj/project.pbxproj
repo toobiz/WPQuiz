@@ -75,8 +75,6 @@
 				2794035A1E6EFD9A00FF6416 /* QuizViewController.swift */,
 				275ABCBC1E7318AC001B3C5A /* QuizView.swift */,
 				275ABCB81E731445001B3C5A /* QuizView.xib */,
-				279403561E6EEB2F00FF6416 /* QuizCell.swift */,
-				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
 				270412FC1E716A8E003389C7 /* AnswerCell.swift */,
 				270412FD1E716A8E003389C7 /* AnswerCell.xib */,
 			);
@@ -137,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				279403401E6DACF100FF6416 /* MainViewController.swift */,
+				279403571E6EEB2F00FF6416 /* QuizCell.xib */,
+				279403561E6EEB2F00FF6416 /* QuizCell.swift */,
 				275ABCBA1E7314AA001B3C5A /* Quiz */,
 				275ABCBB1E7314E0001B3C5A /* Result */,
 			);
