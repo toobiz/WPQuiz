@@ -70,10 +70,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "QuizCell", bundle: nil), forCellReuseIdentifier: "QuizCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as! QuizCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath as IndexPath) as? QuizCell
+
+        cell?.quizPhoto.image = nil
         
-        cell.selectionStyle = .none
-        cell.progressLabel.isHidden = true
+        cell?.selectionStyle = .none
+        cell?.progressLabel.isHidden = true
         
         let quiz = quizzes[indexPath.row]
         var titleString = String()
@@ -83,40 +85,43 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             titleString = quiz.title
             
             if Float(quiz.progress!) > 0 {
-                cell.progressLabel.isHidden = false
+                cell?.progressLabel.isHidden = false
                 progressString = "Quiz rozwiązany w " + String(describing: quiz.progress!) + "%"
-                cell.progressLabel.text = progressString
+                cell?.progressLabel.text = progressString
             }
             if Float(quiz.score) > 0 && Float(quiz.progress!) == 100 {
                 let totalPages = quiz.questionsCount
                 let totalProgress = Float(quiz.score) / Float(totalPages)
                 progressString = "Ostatni wynik: " + String(describing: Int(round(totalProgress * 100))) + "%"
-                cell.progressLabel.text = progressString
+                cell?.progressLabel.text = progressString
             }
-            cell.quizTitle.text = titleString
+            cell?.quizTitle.text = titleString
         }
         
-        cell.quizPhoto.image = nil
-        
         if quiz.urlString == nil || quiz.urlString == "" {
-            cell.quizPhoto.image = nil
+            cell?.quizPhoto.image = nil
             print("Image not available")
         } else if quiz.image != nil {
-            cell.quizPhoto.image = quiz.image!
+            cell?.quizPhoto.image = quiz.image!
             print("Image retrieved from cache")
         } else {
-        
+            
             API.sharedInstance().downloadImage(urlString: quiz.urlString!, completionHandler: { (success, image, error) in
                 if success == true {
+
                     quiz.image = image
                     DispatchQueue.main.async(execute: {
-                        cell.quizPhoto.image = image
+                        if let cellToUpdate = self.tableView.cellForRow(at: indexPath) as? QuizCell {
+                            cellToUpdate.quizPhoto.image = nil
+                            cellToUpdate.quizPhoto.image = image
+                            cellToUpdate.setNeedsLayout()
+                        }
                     });
                 }
             })
         }
 
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
