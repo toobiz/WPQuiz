@@ -204,19 +204,28 @@ class API: NSObject {
     func downloadImage(urlString: String, completionHandler: @escaping (_ success: Bool, _ image: UIImage, _ errorString: String?) -> Void) {
         
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            let image = UIImage(data: data!)
-            
-            let hasAlpha = true
-            let scale: CGFloat = 3.5
-            let sizeChange = CGSize(width: 192, height: 108)
+        let image = UIImage()
 
-            UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
-            image?.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
-            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-            
-            completionHandler(true, scaledImage!, nil)
+            if response != nil {
+                let image = UIImage(data: data!)
+                
+//                let hasAlpha = true
+//                let scale: CGFloat = 3.5
+//                let sizeChange = CGSize(width: 192, height: 108)
+//                
+//                UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+//                image?.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+                
+//                let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                
+                completionHandler(true, image!, nil)
+            }
+            if let error = error {
+                completionHandler(false, image, error.localizedDescription)
+            }
+
         }
         task.resume()
     }
