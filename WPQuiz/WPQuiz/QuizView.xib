@@ -51,10 +51,11 @@
                 <constraint firstItem="UmB-7M-Jji" firstAttribute="leading" secondItem="fhk-DT-tFP" secondAttribute="leading" constant="30" id="4ML-PY-CTb"/>
                 <constraint firstItem="KYh-ZI-VHl" firstAttribute="top" secondItem="mhU-0O-JZT" secondAttribute="bottom" constant="8" id="B3u-4z-aAl"/>
                 <constraint firstItem="mhU-0O-JZT" firstAttribute="top" secondItem="UmB-7M-Jji" secondAttribute="bottom" constant="8" symbolic="YES" id="KxG-TR-PJX"/>
+                <constraint firstAttribute="bottom" secondItem="PoJ-wI-IDd" secondAttribute="bottom" constant="80" id="Kxs-fE-r3e"/>
                 <constraint firstItem="mhU-0O-JZT" firstAttribute="leading" secondItem="fhk-DT-tFP" secondAttribute="leadingMargin" id="Ooz-uo-TOh"/>
                 <constraint firstItem="UmB-7M-Jji" firstAttribute="centerX" secondItem="mhU-0O-JZT" secondAttribute="centerX" id="Roz-vw-cDb"/>
                 <constraint firstItem="KYh-ZI-VHl" firstAttribute="trailing" secondItem="fhk-DT-tFP" secondAttribute="trailingMargin" id="Xsv-ug-tal"/>
-                <constraint firstItem="PoJ-wI-IDd" firstAttribute="top" secondItem="KYh-ZI-VHl" secondAttribute="bottom" constant="22" id="dCo-VX-l8b"/>
+                <constraint firstItem="PoJ-wI-IDd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KYh-ZI-VHl" secondAttribute="bottom" constant="22" id="dCo-VX-l8b"/>
                 <constraint firstItem="PoJ-wI-IDd" firstAttribute="leading" secondItem="fhk-DT-tFP" secondAttribute="leadingMargin" id="erZ-gZ-ZZ9"/>
                 <constraint firstItem="mhU-0O-JZT" firstAttribute="trailing" secondItem="fhk-DT-tFP" secondAttribute="trailingMargin" id="nDa-Qo-GXI"/>
                 <constraint firstItem="UmB-7M-Jji" firstAttribute="top" secondItem="fhk-DT-tFP" secondAttribute="top" constant="110" id="xpw-kU-1Kv"/>
